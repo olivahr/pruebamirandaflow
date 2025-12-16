@@ -2,8 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Miranda Flow Boutique</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miranda Flow — Sistema Z</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800;900&display=swap" rel="stylesheet">
 
@@ -11,147 +13,163 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
 body{background:#000;color:#fff;overflow-x:hidden}
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
 position:fixed;top:0;width:100%;height:70px;
 display:flex;align-items:center;justify-content:space-between;
 padding:0 40px;
-background:rgba(0,0,0,.6);
+background:rgba(0,0,0,.65);
 backdrop-filter:blur(16px);
 z-index:100;
 }
-.logo{display:flex;align-items:center;gap:14px;font-weight:800;letter-spacing:4px}
-.logo img{height:44px;filter:drop-shadow(0 0 20px rgba(255,255,255,.6))}
+
+.brand{
+display:flex;align-items:center;gap:14px;
+letter-spacing:4px;font-weight:800;
+}
+.brand img{
+height:42px;
+filter:drop-shadow(0 0 18px rgba(255,255,255,.5));
+}
+
 nav a{
-margin-left:34px;color:#fff;text-decoration:none;
-letter-spacing:3px;font-size:13px;opacity:.7
+margin-left:36px;
+color:#fff;text-decoration:none;
+letter-spacing:3px;font-size:13px;
+opacity:.7;
 }
 nav a:hover{opacity:1}
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{
-min-height:100vh;padding-top:120px;
-display:flex;align-items:center;position:relative
+min-height:100vh;
+padding-top:120px;
+display:flex;align-items:center;
+position:relative;
 }
+
 .hero::before{
-content:"";position:absolute;inset:-20%;
+content:"";
+position:absolute;inset:-25%;
 background:
-radial-gradient(circle,rgba(0,0,0,.35),#000 70%),
-url("logo.jpg") center/70% no-repeat;
-opacity:.22;animation:float 20s ease-in-out infinite
+radial-gradient(circle at center, rgba(0,0,0,.4), #000 70%),
+url("logo.jpg") center/65% no-repeat;
+opacity:.35;
+animation:logoFloat 20s ease-in-out infinite;
 }
-@keyframes float{
-0%{transform:translateY(0) scale(1)}
-50%{transform:translateY(-30px) scale(1.07)}
-100%{transform:translateY(0) scale(1)}
+
+@keyframes logoFloat{
+0%{transform:scale(1) translateY(0)}
+50%{transform:scale(1.08) translateY(-30px)}
+100%{transform:scale(1) translateY(0)}
 }
-.hero-content{position:relative;padding-left:8vw;max-width:900px}
+
+.hero-content{
+position:relative;
+padding-left:8vw;
+max-width:900px;
+}
+
 .hero h1{
-font-size:clamp(60px,9vw,110px);
-font-weight:900;letter-spacing:6px
+font-size:clamp(58px,9vw,110px);
+font-weight:900;
+letter-spacing:6px;
 }
+
 .hero p{
-margin-top:24px;font-size:18px;max-width:520px;
-opacity:.85;line-height:1.6
-}
-.hero button{
-margin-top:48px;padding:18px 52px;
-background:none;border:1px solid #fff;color:#fff;
-letter-spacing:4px;cursor:pointer;transition:.4s
-}
-.hero button:hover{background:#fff;color:#000}
-
-/* DESCUENTO */
-.discount{
-position:fixed;bottom:28px;right:28px;
-background:#fff;color:#000;
-padding:16px 28px;border-radius:40px;
-font-weight:800;letter-spacing:1px;
-display:flex;gap:10px;
-box-shadow:0 25px 60px rgba(0,0,0,.8);
-animation:pulse 2.4s infinite;z-index:99
-}
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.12)}
-100%{transform:scale(1)}
+margin-top:24px;
+font-size:18px;
+max-width:520px;
+opacity:.85;
+line-height:1.6;
 }
 
-/* EXCLUSIVAS */
-.exclusive{
-padding:180px 8vw;
+/* ===== PRENDAS ===== */
+.prendas{
+padding:180px 8vw 140px;
 }
-.exclusive-title{
+
+.prendas-title{
 text-align:center;
 margin-bottom:120px;
 opacity:0;
 transform:translateY(-60px);
 animation:titleIn 1.4s ease forwards;
 }
+
 @keyframes titleIn{
 to{opacity:1;transform:translateY(0)}
 }
-.exclusive-title h2{
+
+.prendas-title h2{
 font-size:48px;
-letter-spacing:12px;
+letter-spacing:14px;
 font-weight:800;
 text-shadow:0 0 30px rgba(255,255,255,.25);
 }
 
-/* GRID */
-.grid{
+.prendas-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:70px;
 }
-.card{
+
+.prenda{
 position:relative;
-height:420px;
+height:300px;
 border-radius:30px;
 overflow:hidden;
 background:#111;
 opacity:0;
-transform:translateY(120px) scale(.92);
-animation:cardUp 1.4s ease forwards;
+transform:translateY(100px) scale(.94);
+animation:cardIn 1.4s ease forwards;
 }
-.card:nth-child(1){animation-delay:.2s}
-.card:nth-child(2){animation-delay:.4s}
-.card:nth-child(3){animation-delay:.6s}
-.card:nth-child(4){animation-delay:.8s}
 
-@keyframes cardUp{
+.prenda:nth-child(1){animation-delay:.2s}
+.prenda:nth-child(2){animation-delay:.4s}
+.prenda:nth-child(3){animation-delay:.6s}
+.prenda:nth-child(4){animation-delay:.8s}
+.prenda:nth-child(5){animation-delay:1s}
+.prenda:nth-child(6){animation-delay:1.2s}
+
+@keyframes cardIn{
 to{opacity:1;transform:translateY(0) scale(1)}
 }
 
-.card img{
+.prenda img{
 width:100%;height:100%;
 object-fit:cover;
 transition:1.1s cubic-bezier(.19,1,.22,1);
-filter:blur(4px) brightness(.6);
-}
-.card:hover img{
-transform:scale(1.18);
-filter:blur(0) brightness(.8);
-}
-.card::after{
-content:"";
-position:absolute;inset:0;
-background:linear-gradient(to top,rgba(0,0,0,.9),transparent 65%);
-}
-.card span{
-position:absolute;
-bottom:28px;left:28px;
-font-weight:800;
-letter-spacing:5px;
-font-size:14px;
-z-index:2;
-opacity:.9
+filter:brightness(.75);
 }
 
-/* FOOTER */
+.prenda:hover img{
+transform:scale(1.18);
+filter:brightness(.95);
+}
+
+.prenda::after{
+content:"";
+position:absolute;inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.85),transparent 65%);
+}
+
+.prenda span{
+position:absolute;
+bottom:26px;left:26px;
+font-weight:800;
+letter-spacing:5px;
+font-size:15px;
+z-index:2;
+}
+
+/* ===== FOOTER ===== */
 footer{
-padding:50px;text-align:center;
-opacity:.4;font-size:12px;letter-spacing:2px
+padding:60px 20px;
+text-align:center;
+opacity:.45;
+font-size:12px;
+letter-spacing:2px;
 }
 </style>
 </head>
@@ -159,41 +177,46 @@ opacity:.4;font-size:12px;letter-spacing:2px
 <body>
 
 <header>
-<div class="logo">
+<div class="brand">
 <img src="logo.jpg">
-BOUTIQUE
+SISTEMA Z
 </div>
+
 <nav>
 <a href="index.html">Inicio</a>
-<a href="producto.html">Tienda</a>
-<a href="carrito.html">Carrito</a>
+<a href="#prendas">Prendas</a>
 </nav>
 </header>
 
 <section class="hero">
 <div class="hero-content">
 <h1>MIRANDA<br>FLOW</h1>
-<p>Prendas con presencia.<br>Estilo que se impone sin hablar.</p>
-<button onclick="location.href='producto.html'">VER PRENDAS</button>
+<p>
+No es solo ropa.<br>
+Es presencia. Es identidad.<br>
+Es entrar al ecosistema Sistema Z.
+</p>
 </div>
 </section>
 
-<section class="exclusive">
-<div class="exclusive-title">
-<h2>EXCLUSIVAS</h2>
+<section class="prendas" id="prendas">
+<div class="prendas-title">
+<h2>PRENDAS</h2>
 </div>
 
-<div class="grid">
-<div class="card"><img src="exclusive-1.jpg"><span>DROP I</span></div>
-<div class="card"><img src="exclusive-2.jpg"><span>DROP II</span></div>
-<div class="card"><img src="exclusive-3.jpg"><span>LIMITED</span></div>
-<div class="card"><img src="exclusive-4.jpg"><span>SIGNATURE</span></div>
+<div class="prendas-grid">
+<div class="prenda"><img src="relojes.jpg"><span>RELOJES</span></div>
+<div class="prenda"><img src="cadenas.jpg"><span>CADENAS</span></div>
+<div class="prenda"><img src="camisas.jpg"><span>CAMISAS</span></div>
+<div class="prenda"><img src="jeans.jpg"><span>JEANS</span></div>
+<div class="prenda"><img src="hoodies.jpg"><span>HOODIES</span></div>
+<div class="prenda"><img src="accesorios.jpg"><span>ACCESORIOS</span></div>
 </div>
 </section>
 
-<div class="discount">🎁 -20% HOY</div>
-
-<footer>© Miranda Flow Boutique — Sistema Z</footer>
+<footer>
+© Miranda Flow — Sistema Z Ecosystem
+</footer>
 
 </body>
 </html>
