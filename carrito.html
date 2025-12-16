@@ -2,165 +2,266 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Carrito | Miranda Flow</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Carrito | Miranda Flow</title>
 
 <style>
-*{
+:root{
+  --bg:#0a0a0a;
+  --glass:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);
+  --text:#ffffff;
+  --muted:#9a9a9a;
+}
+
+*{box-sizing:border-box}
+
+body{
   margin:0;
-  padding:0;
-  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
   -webkit-tap-highlight-color:transparent;
 }
 
-body{
-  font-family:'Inter',system-ui;
-  background:#000;
-  color:#fff;
-  min-height:100vh;
-  overflow-x:hidden;
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
 }
-
-/* ===== FONDO SUAVE ===== */
-.bg{
-  position:fixed;
-  inset:-20%;
-  background:
-    radial-gradient(600px 400px at 20% 20%, rgba(255,255,255,.08), transparent 60%),
-    radial-gradient(700px 500px at 80% 70%, rgba(0,255,200,.08), transparent 65%);
-  filter:blur(22px);
-  z-index:-1;
+.header-inner{
+  max-width:1100px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-
-/* ===== FLECHA PREMIUM (SIEMPRE INDEX) ===== */
+.brand{
+  font-weight:600;
+  letter-spacing:.6px;
+}
 .back{
-  position:fixed;
-  top:18px;
-  left:18px;
-  z-index:50;
-  width:46px;
-  height:46px;
-  border-radius:14px;
-  background:rgba(255,255,255,.12);
-  backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.25);
-  display:flex;
-  align-items:center;
-  justify-content:center;
   text-decoration:none;
-  color:#fff;
-  font-size:20px;
-  transition:.2s;
+  color:var(--muted);
+  font-size:14px;
 }
-.back:hover{
-  background:rgba(255,255,255,.22);
-  transform:translateX(-2px);
+.back:hover{color:#fff}
+
+/* MAIN */
+main{
+  max-width:900px;
+  margin:42px auto;
+  padding:0 20px;
+}
+h1{
+  font-size:34px;
+  margin:0 0 6px 0;
+}
+.subtitle{
+  color:var(--muted);
+  margin-bottom:30px;
 }
 
-/* ===== CONTENEDOR ===== */
-.wrap{
-  min-height:100vh;
+/* ITEMS */
+.cart{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.item{
+  background:var(--glass);
+  border-radius:18px;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 30px 60px rgba(0,0,0,.45);
+  animation:fadeUp .35s ease;
+}
+.item-info{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.item-name{
+  font-size:16px;
+  font-weight:500;
+}
+.item-price{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* QTY */
+.qty{
   display:flex;
   align-items:center;
-  justify-content:center;
-  padding:90px 16px 40px;
+  gap:14px;
+}
+.qty button{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  background:transparent;
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+}
+.qty button:active{
+  transform:scale(.94);
+}
+.qty span{
+  min-width:22px;
+  text-align:center;
 }
 
-/* ===== TARJETA ===== */
-.card{
-  width:100%;
-  max-width:420px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:28px;
-  padding:36px 26px 38px;
+/* SUMMARY */
+.summary{
+  margin-top:34px;
+  border-top:1px solid var(--border);
+  padding-top:26px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+.total{
+  display:flex;
+  justify-content:space-between;
+  font-size:20px;
+  font-weight:600;
+}
+
+/* BUTTONS */
+.checkout{
+  background:#fff;
+  color:#000;
+  border:none;
+  border-radius:999px;
+  padding:18px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
+.checkout:active{transform:scale(.98)}
+
+.continue{
   text-align:center;
-  backdrop-filter:blur(18px);
-  animation:fadeUp .6s ease;
+  color:var(--muted);
+  font-size:14px;
+  cursor:pointer;
+}
+.continue:hover{color:#fff}
+
+/* EMPTY */
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:70px 0;
+  font-size:15px;
 }
 
 @keyframes fadeUp{
-  from{opacity:0; transform:translateY(30px)}
-  to{opacity:1; transform:translateY(0)}
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-.icon{
-  width:72px;
-  height:72px;
-  margin:0 auto 22px;
-  border-radius:50%;
-  background:rgba(255,255,255,.15);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:34px;
-}
-
-h1{
-  font-size:28px;
-  font-weight:700;
-  margin-bottom:14px;
-}
-
-p{
-  font-size:15px;
-  line-height:1.6;
-  color:rgba(255,255,255,.75);
-  margin-bottom:26px;
-}
-
-/* ===== BOTÓN ===== */
-.btn{
-  display:inline-block;
-  padding:14px 22px;
-  border-radius:18px;
-  font-weight:600;
-  text-decoration:none;
-  color:#000;
-  background:#fff;
-  transition:.2s;
-}
-.btn:hover{
-  transform:translateY(-2px);
-}
-
-.note{
-  margin-top:18px;
-  font-size:13px;
-  color:rgba(255,255,255,.5);
+@media(max-width:600px){
+  h1{font-size:28px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-
-<!-- FLECHA: SIEMPRE A INDEX -->
-<a href="index.html" class="back">←</a>
-
-<div class="wrap">
-  <div class="card">
-
-    <div class="icon">🛒</div>
-
-    <h1>Carrito</h1>
-
-    <p>
-      Tu carrito está vacío.<br>
-      Estás explorando el ecosistema <strong>Miranda Flow</strong>.
-    </p>
-
-    <a href="tienda.html" class="btn">Ir a la tienda</a>
-
-    <div class="note">
-      Maqueta visual · Sin pagos activos
-    </div>
-
+<header>
+  <div class="header-inner">
+    <div class="brand">Miranda Flow</div>
+    <a class="back" href="index.html">← Volver</a>
   </div>
-</div>
+</header>
+
+<main>
+  <h1>Carrito</h1>
+  <div class="subtitle">Selección privada</div>
+
+  <div id="cart" class="cart"></div>
+
+  <div id="summary" class="summary" style="display:none">
+    <div class="total">
+      <span>Total</span>
+      <span id="total">$0</span>
+    </div>
+    <button class="checkout">Finalizar compra</button>
+    <div class="continue" onclick="location.href='index.html'">
+      Seguir explorando
+    </div>
+  </div>
+
+  <div id="empty" class="empty" style="display:none">
+    Tu carrito está vacío.
+  </div>
+</main>
+
+<script>
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+const cartEl = document.getElementById("cart");
+const totalEl = document.getElementById("total");
+const summaryEl = document.getElementById("summary");
+const emptyEl = document.getElementById("empty");
+
+function render(){
+  cartEl.innerHTML="";
+  let total=0;
+
+  if(carrito.length===0){
+    emptyEl.style.display="block";
+    summaryEl.style.display="none";
+    return;
+  }
+
+  emptyEl.style.display="none";
+  summaryEl.style.display="flex";
+
+  carrito.forEach((item,i)=>{
+    total += item.price * item.qty;
+
+    const el=document.createElement("div");
+    el.className="item";
+    el.innerHTML=`
+      <div class="item-info">
+        <div class="item-name">${item.name}</div>
+        <div class="item-price">$${item.price}</div>
+      </div>
+      <div class="qty">
+        <button onclick="updateQty(${i},-1)">−</button>
+        <span>${item.qty}</span>
+        <button onclick="updateQty(${i},1)">+</button>
+      </div>
+    `;
+    cartEl.appendChild(el);
+  });
+
+  totalEl.textContent="$"+total;
+}
+
+function updateQty(i,delta){
+  carrito[i].qty+=delta;
+  if(carrito[i].qty<=0){
+    carrito.splice(i,1);
+  }
+  localStorage.setItem("carrito",JSON.stringify(carrito));
+  render();
+}
+
+render();
+</script>
 
 </body>
 </html>
