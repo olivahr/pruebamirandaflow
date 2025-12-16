@@ -1,161 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Carrito | Miranda Flow Boutique</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Carrito | Miranda Flow</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fuente premium -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
 
-    body{
-      font-family:'Inter',system-ui,-apple-system;
-      background:#000;
-      color:#fff;
-      min-height:100vh;
-      overflow-x:hidden;
-    }
+body{
+  font-family:'Inter',system-ui;
+  background:#000;
+  color:#fff;
+  min-height:100vh;
+  overflow-x:hidden;
+}
 
-    /* ===== BACKGROUND SUAVE ===== */
-    .bg{
-      position:fixed;
-      inset:-20%;
-      background:
-        radial-gradient(600px 400px at 20% 20%, rgba(255,255,255,.08), transparent 60%),
-        radial-gradient(700px 500px at 80% 60%, rgba(0,255,200,.08), transparent 65%);
-      filter:blur(20px);
-      z-index:-1;
-    }
+/* ===== FONDO SUAVE ===== */
+.bg{
+  position:fixed;
+  inset:-20%;
+  background:
+    radial-gradient(600px 400px at 20% 20%, rgba(255,255,255,.08), transparent 60%),
+    radial-gradient(700px 500px at 80% 70%, rgba(0,255,200,.08), transparent 65%);
+  filter:blur(22px);
+  z-index:-1;
+}
 
-    /* ===== BOTÓN VOLVER (SIEMPRE A INDEX) ===== */
-    .back-btn{
-      position:fixed;
-      top:20px;
-      left:20px;
-      z-index:100;
-      text-decoration:none;
-      color:#fff;
-      font-size:18px;
-      padding:10px 14px;
-      border-radius:14px;
-      background:rgba(255,255,255,.12);
-      backdrop-filter:blur(14px);
-      border:1px solid rgba(255,255,255,.25);
-    }
-    .back-btn:hover{
-      background:rgba(255,255,255,.22);
-    }
+/* ===== FLECHA PREMIUM (SIEMPRE INDEX) ===== */
+.back{
+  position:fixed;
+  top:18px;
+  left:18px;
+  z-index:50;
+  width:46px;
+  height:46px;
+  border-radius:14px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#fff;
+  font-size:20px;
+  transition:.2s;
+}
+.back:hover{
+  background:rgba(255,255,255,.22);
+  transform:translateX(-2px);
+}
 
-    /* ===== CONTENEDOR ===== */
-    .wrap{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:90px 16px 40px;
-    }
+/* ===== CONTENEDOR ===== */
+.wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:90px 16px 40px;
+}
 
-    /* ===== CARD CARRITO ===== */
-    .card{
-      width:100%;
-      max-width:420px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:26px;
-      padding:34px 26px 38px;
-      text-align:center;
-      backdrop-filter:blur(18px);
-      animation:fadeUp .6s ease;
-    }
+/* ===== TARJETA ===== */
+.card{
+  width:100%;
+  max-width:420px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:28px;
+  padding:36px 26px 38px;
+  text-align:center;
+  backdrop-filter:blur(18px);
+  animation:fadeUp .6s ease;
+}
 
-    @keyframes fadeUp{
-      from{opacity:0; transform:translateY(30px)}
-      to{opacity:1; transform:translateY(0)}
-    }
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(30px)}
+  to{opacity:1; transform:translateY(0)}
+}
 
-    .icon{
-      width:70px;
-      height:70px;
-      margin:0 auto 20px;
-      border-radius:50%;
-      background:rgba(255,255,255,.15);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:34px;
-    }
+.icon{
+  width:72px;
+  height:72px;
+  margin:0 auto 22px;
+  border-radius:50%;
+  background:rgba(255,255,255,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+}
 
-    h1{
-      font-size:28px;
-      font-weight:700;
-      margin-bottom:12px;
-    }
+h1{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:14px;
+}
 
-    p{
-      font-size:15px;
-      line-height:1.6;
-      color:rgba(255,255,255,.75);
-      margin-bottom:26px;
-    }
+p{
+  font-size:15px;
+  line-height:1.6;
+  color:rgba(255,255,255,.75);
+  margin-bottom:26px;
+}
 
-    .note{
-      font-size:13px;
-      color:rgba(255,255,255,.5);
-    }
+/* ===== BOTÓN ===== */
+.btn{
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:18px;
+  font-weight:600;
+  text-decoration:none;
+  color:#000;
+  background:#fff;
+  transition:.2s;
+}
+.btn:hover{
+  transform:translateY(-2px);
+}
 
-    /* ===== BOTÓN IR A TIENDA ===== */
-    .btn{
-      display:inline-block;
-      margin-top:24px;
-      padding:14px 22px;
-      border-radius:18px;
-      font-weight:600;
-      text-decoration:none;
-      color:#000;
-      background:#fff;
-      transition:.2s;
-    }
-    .btn:hover{
-      transform:translateY(-2px);
-    }
-  </style>
+.note{
+  margin-top:18px;
+  font-size:13px;
+  color:rgba(255,255,255,.5);
+}
+</style>
 </head>
 
 <body>
 
-  <div class="bg"></div>
+<div class="bg"></div>
 
-  <!-- Flecha volver (SIEMPRE index) -->
-  <a href="index.html" class="back-btn">← Volver</a>
+<!-- FLECHA: SIEMPRE A INDEX -->
+<a href="index.html" class="back">←</a>
 
-  <div class="wrap">
-    <div class="card">
+<div class="wrap">
+  <div class="card">
 
-      <div class="icon">🛒</div>
+    <div class="icon">🛒</div>
 
-      <h1>Carrito</h1>
+    <h1>Carrito</h1>
 
-      <p>
-        Tu carrito está vacío por ahora.<br>
-        Estás explorando el ecosistema <strong>Miranda Flow</strong>.
-      </p>
+    <p>
+      Tu carrito está vacío.<br>
+      Estás explorando el ecosistema <strong>Miranda Flow</strong>.
+    </p>
 
-      <a href="tienda.html" class="btn">Ir a la tienda</a>
+    <a href="tienda.html" class="btn">Ir a la tienda</a>
 
-      <div class="note" style="margin-top:18px;">
-        Esto es una maqueta visual. Sin pagos activos.
-      </div>
-
+    <div class="note">
+      Maqueta visual · Sin pagos activos
     </div>
+
   </div>
+</div>
 
 </body>
 </html>
