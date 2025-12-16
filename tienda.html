@@ -1,282 +1,571 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Miranda Flow Boutique</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tienda | Miranda Flow Boutique</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800;900&display=swap" rel="stylesheet">
 
-  <style>
-    /* ================= RESET ================= */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+  }
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #060606;
-      color: #fff;
-      overflow-x: hidden;
-    }
+  /* Background glow */
+  .bg{
+    position:fixed; inset:-20%;
+    background:
+      radial-gradient(900px 650px at 20% 85%, rgba(0,255,150,.16), transparent 55%),
+      radial-gradient(950px 650px at 85% 20%, rgba(0,120,255,.16), transparent 55%),
+      radial-gradient(900px 650px at 55% 55%, rgba(255,255,255,.05), transparent 55%);
+    filter: blur(10px);
+    z-index:-2;
+  }
+  .noise{
+    position:fixed; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+    opacity:.35;
+    pointer-events:none;
+    z-index:-1;
+  }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+  /* Topbar */
+  header{
+    position:fixed; top:0; left:0; right:0;
+    height:74px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    background:rgba(0,0,0,.55);
+    backdrop-filter: blur(16px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:1000;
+  }
+  .left{
+    display:flex; align-items:center; gap:12px;
+    min-width:220px;
+  }
+  .back{
+    width:42px; height:42px;
+    border-radius:14px;
+    display:grid; place-items:center;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+    cursor:pointer;
+    transition:.25s ease;
+  }
+  .back:hover{transform:translateY(-1px); background:rgba(255,255,255,.1)}
+  .back:active{transform:translateY(0px) scale(.98)}
+  .back svg{opacity:.9}
 
-    /* ================= HEADER ================= */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.65);
-      backdrop-filter: blur(12px);
-      z-index: 1000;
-    }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+  }
+  .brand img{
+    width:40px; height:40px; object-fit:cover;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 14px 45px rgba(0,0,0,.55);
+  }
+  .brand .text{
+    line-height:1.05;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:11px;
+    color:rgba(255,255,255,.72);
+  }
+  .brand .text b{
+    display:block;
+    font-size:13px;
+    letter-spacing:4px;
+    color:#fff;
+  }
 
-    .logo img {
-      height: 36px;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,.6));
-    }
+  nav{
+    display:flex;
+    gap:18px;
+    align-items:center;
+  }
+  nav a{
+    text-decoration:none;
+    color:rgba(255,255,255,.68);
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    padding:10px 10px;
+    border-radius:12px;
+    transition:.25s ease;
+  }
+  nav a:hover{
+    color:#fff;
+    background:rgba(255,255,255,.06);
+  }
+  nav a.active{
+    color:#fff;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.10);
+  }
 
-    nav a {
-      margin-left: 32px;
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: 1px;
-      opacity: .75;
-      transition: opacity .3s;
-    }
+  /* Layout */
+  .wrap{
+    padding:110px 7% 90px;
+    max-width:1200px;
+    margin:0 auto;
+  }
 
-    nav a:hover {
-      opacity: 1;
-    }
+  /* Hero */
+  .hero{
+    position:relative;
+    padding:34px 26px;
+    border-radius:30px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:0 30px 90px rgba(0,0,0,.55);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:-2px;
+    background:
+      radial-gradient(900px 500px at 10% 20%, rgba(0,255,160,.18), transparent 55%),
+      radial-gradient(900px 500px at 90% 70%, rgba(0,120,255,.18), transparent 55%);
+    opacity:.8;
+    filter: blur(14px);
+  }
+  .hero > *{position:relative; z-index:1}
 
-    /* ================= HERO ================= */
-    .hero {
-      min-height: 100vh;
-      padding: 160px 6% 120px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background:
-        radial-gradient(700px 400px at 50% 20%, rgba(255,0,150,.22), transparent 60%),
-        radial-gradient(600px 400px at 80% 80%, rgba(0,140,255,.22), transparent 60%),
-        #060606;
-    }
+  .kicker{
+    font-size:12px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.65);
+  }
+  h1{
+    margin-top:10px;
+    font-size:clamp(42px,5.2vw,74px);
+    letter-spacing:2px;
+    font-weight:900;
+    text-transform:uppercase;
+    text-shadow:0 18px 60px rgba(0,0,0,.75);
+  }
+  .sub{
+    margin-top:10px;
+    max-width:780px;
+    color:rgba(255,255,255,.72);
+    font-size:16px;
+    line-height:1.6;
+  }
 
-    /* Watermark logo */
-    .hero::before {
-      content: "Miranda Flow";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: clamp(80px, 16vw, 220px);
-      font-weight: 900;
-      letter-spacing: 12px;
-      color: rgba(255,255,255,0.04);
-      pointer-events: none;
-      white-space: nowrap;
-    }
+  /* Filters row */
+  .row{
+    margin-top:22px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .pill{
+    padding:10px 14px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(0,0,0,.35);
+    color:rgba(255,255,255,.75);
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:.25s ease;
+    user-select:none;
+  }
+  .pill:hover{transform:translateY(-1px); background:rgba(255,255,255,.06); color:#fff}
+  .pill.active{background:rgba(255,255,255,.12); color:#fff}
 
-    .hero h1 {
-      font-size: clamp(42px, 6vw, 76px);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.1;
-      z-index: 2;
-    }
+  /* Product grid */
+  .grid{
+    margin-top:26px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
+  }
+  .card{
+    position:relative;
+    border-radius:26px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.10);
+    background:rgba(255,255,255,.05);
+    box-shadow:0 18px 60px rgba(0,0,0,.55);
+    transform: translateY(18px);
+    opacity:0;
+    filter: blur(8px);
+    transition:.9s ease;
+  }
+  .card.show{
+    transform:none;
+    opacity:1;
+    filter:none;
+  }
+  .img{
+    height:250px;
+    overflow:hidden;
+    background:#0b0b0b;
+  }
+  .img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:scale(1.06);
+    transition:.35s ease;
+    opacity:.92;
+  }
+  .card:hover .img img{
+    transform:scale(1.12);
+    opacity:1;
+  }
+  .info{
+    padding:16px 16px 18px;
+  }
+  .tag{
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.55);
+  }
+  .name{
+    margin-top:8px;
+    font-weight:800;
+    letter-spacing:1px;
+    font-size:18px;
+    text-transform:uppercase;
+  }
+  .desc{
+    margin-top:8px;
+    color:rgba(255,255,255,.65);
+    font-size:13px;
+    line-height:1.55;
+    min-height:40px;
+  }
+  .bottom{
+    margin-top:14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .price{
+    font-weight:900;
+    font-size:16px;
+    letter-spacing:1px;
+  }
+  .btn{
+    padding:10px 12px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    cursor:pointer;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    transition:.25s ease;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.12)}
+  .btn:active{transform:translateY(0px) scale(.98)}
+  .badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    padding:10px 12px;
+    border-radius:999px;
+    background:rgba(0,0,0,.55);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(12px);
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+  }
 
-    .hero h1 span {
-      display: block;
-      font-size: clamp(16px, 2vw, 22px);
-      font-weight: 300;
-      letter-spacing: 6px;
-      opacity: .7;
-      margin-bottom: 18px;
-    }
+  /* Floating promo */
+  .promo{
+    position:fixed;
+    right:16px;
+    bottom:18px;
+    z-index:1200;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 18px;
+    border-radius:999px;
+    background:#fff;
+    color:#111;
+    font-weight:900;
+    letter-spacing:2px;
+    box-shadow:0 30px 80px rgba(0,0,0,.55);
+    cursor:pointer;
+    user-select:none;
+    transform: translateY(0);
+    animation: floaty 2.8s ease-in-out infinite;
+  }
+  .promo small{
+    font-weight:800;
+    opacity:.85;
+    letter-spacing:3px;
+  }
+  @keyframes floaty{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+  }
 
-    .hero p {
-      max-width: 520px;
-      margin-top: 24px;
-      font-size: 18px;
-      opacity: .85;
-      z-index: 2;
-    }
+  /* Toast */
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:110px;
+    transform:translateX(-50%) translateY(14px);
+    background:rgba(0,0,0,.75);
+    border:1px solid rgba(255,255,255,.14);
+    padding:12px 14px;
+    border-radius:16px;
+    backdrop-filter: blur(14px);
+    color:#fff;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s ease;
+    z-index:1300;
+  }
+  .toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
 
-    /* ================= PRODUCTS ================= */
-    .products {
-      padding: 140px 6% 120px;
-    }
-
-    .products-header {
-      margin-bottom: 70px;
-    }
-
-    .products-header h2 {
-      font-size: clamp(32px, 4vw, 54px);
-      font-weight: 800;
-    }
-
-    .products-header p {
-      margin-top: 14px;
-      max-width: 520px;
-      opacity: .8;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 46px;
-    }
-
-    .product-card {
-      background: rgba(20,20,20,.85);
-      border-radius: 24px;
-      overflow: hidden;
-      transition: transform .6s, box-shadow .6s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 40px 90px rgba(0,0,0,.65);
-    }
-
-    .product-image {
-      height: 360px;
-      background: linear-gradient(135deg, #222, #111);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      opacity: .6;
-    }
-
-    .product-info {
-      padding: 28px;
-    }
-
-    .product-info h3 {
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .product-info p {
-      margin: 10px 0 20px;
-      font-size: 14px;
-      opacity: .75;
-    }
-
-    .price {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    /* ================= FOOTER ================= */
-    footer {
-      padding: 80px 6% 40px;
-      text-align: center;
-      font-size: 13px;
-      opacity: .55;
-    }
-
-    /* ================= MOBILE ================= */
-    @media (max-width: 768px) {
-      nav a {
-        margin-left: 18px;
-      }
-
-      .hero {
-        padding-top: 140px;
-      }
-    }
-  </style>
+  /* Responsive */
+  @media (max-width:860px){
+    nav{gap:6px}
+    nav a{padding:10px 8px; letter-spacing:2px}
+    .left{min-width:auto}
+  }
+  @media (max-width:560px){
+    .brand .text{display:none}
+    header{height:70px}
+    .wrap{padding-top:104px}
+  }
+</style>
 </head>
 
 <body>
+  <div class="bg"></div>
+  <div class="noise"></div>
 
-  <!-- HEADER -->
   <header>
-    <div class="logo">
-      <img src="logo.jpg" alt="Miranda Flow Boutique">
+    <div class="left">
+      <button class="back" id="backBtn" aria-label="Volver atrás">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="brand">
+        <img src="logo.jpg" alt="Miranda Flow Logo">
+        <div class="text"><b>BOUTIQUE</b> MIRANDA FLOW</div>
+      </div>
     </div>
+
     <nav>
-      <a href="../index.html">Inicio</a>
-      <a href="tienda.html">Tienda</a>
-      <a href="carrito.html">Carrito</a>
+      <a href="index.html">INICIO</a>
+      <a href="prendas.html">PRENDAS</a>
+      <a class="active" href="producto.html">TIENDA</a>
+      <a href="carrito.html">CARRITO</a>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>
-      <span>Boutique Editorial</span>
-      Miranda Flow
-    </h1>
-    <p>
-      Piezas cuidadosamente seleccionadas para mujeres que entienden
-      que el estilo no se sigue: se impone.
-    </p>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section class="products">
-    <div class="products-header">
-      <h2>Selección Curada</h2>
-      <p>
-        No es cantidad. Es criterio. Cada pieza existe
-        para elevar presencia y autoridad.
+  <main class="wrap">
+    <section class="hero">
+      <div class="kicker">Tienda / Drop / Presencia</div>
+      <h1>COLECCIÓN</h1>
+      <p class="sub">
+        Maqueta visual premium. Selecciones de muestra con estética real, lista para crecer a inventario completo cuando tú quieras.
       </p>
-    </div>
 
-    <div class="product-grid">
-
-      <div class="product-card">
-        <div class="product-image">Imagen del producto</div>
-        <div class="product-info">
-          <h3>Vestido Ébano</h3>
-          <p>Elegancia oscura con estructura impecable.</p>
-          <div class="price">$120</div>
-        </div>
+      <div class="row" id="filters">
+        <div class="pill active" data-filter="all">Todo</div>
+        <div class="pill" data-filter="reloj">Relojes</div>
+        <div class="pill" data-filter="cadena">Cadenas</div>
+        <div class="pill" data-filter="anillo">Anillos</div>
+        <div class="pill" data-filter="accesorio">Accesorios</div>
       </div>
+    </section>
 
-      <div class="product-card">
-        <div class="product-image">Imagen del producto</div>
-        <div class="product-info">
-          <h3>Conjunto Aurora</h3>
-          <p>Minimalismo con carácter dominante.</p>
-          <div class="price">$98</div>
+    <section class="grid" id="grid">
+      <!-- Producto 1 -->
+      <article class="card" data-cat="reloj">
+        <div class="badge">Edición</div>
+        <div class="img"><img src="exclusive-1.jpg" alt="Producto 1"></div>
+        <div class="info">
+          <div class="tag">RELOJ</div>
+          <div class="name">Miranda Steel</div>
+          <div class="desc">Presencia limpia. Detalle premium. Diseño para “verse caro” sin hablar.</div>
+          <div class="bottom">
+            <div class="price">$149</div>
+            <button class="btn" data-id="ms-001" data-name="Miranda Steel" data-price="149">
+              + Carrito
+            </button>
+          </div>
         </div>
-      </div>
+      </article>
 
-      <div class="product-card">
-        <div class="product-image">Imagen del producto</div>
-        <div class="product-info">
-          <h3>Blazer Noir</h3>
-          <p>Presencia absoluta en cada línea.</p>
-          <div class="price">$150</div>
+      <!-- Producto 2 -->
+      <article class="card" data-cat="cadena">
+        <div class="badge">Exclusive</div>
+        <div class="img"><img src="exclusive-2.jpg" alt="Producto 2"></div>
+        <div class="info">
+          <div class="tag">CADENA</div>
+          <div class="name">Flow Chain</div>
+          <div class="desc">Brillo controlado. Corte moderno. Look boutique nivel top.</div>
+          <div class="bottom">
+            <div class="price">$89</div>
+            <button class="btn" data-id="fc-002" data-name="Flow Chain" data-price="89">
+              + Carrito
+            </button>
+          </div>
         </div>
-      </div>
+      </article>
 
-    </div>
-  </section>
+      <!-- Producto 3 -->
+      <article class="card" data-cat="anillo">
+        <div class="badge">Nuevo</div>
+        <div class="img"><img src="exclusive-3.jpg" alt="Producto 3"></div>
+        <div class="info">
+          <div class="tag">ANILLO</div>
+          <div class="name">Z Ring</div>
+          <div class="desc">Minimal pero agresivo. Un detalle pequeño que cambia el outfit.</div>
+          <div class="bottom">
+            <div class="price">$59</div>
+            <button class="btn" data-id="zr-003" data-name="Z Ring" data-price="59">
+              + Carrito
+            </button>
+          </div>
+        </div>
+      </article>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2025 Miranda Flow Boutique · Sistema Z
-  </footer>
+      <!-- Producto 4 -->
+      <article class="card" data-cat="accesorio">
+        <div class="badge">Drop</div>
+        <div class="img"><img src="exclusive-4.jpg" alt="Producto 4"></div>
+        <div class="info">
+          <div class="tag">ACCESORIO</div>
+          <div class="name">Night Piece</div>
+          <div class="desc">Textura y presencia. El tipo de pieza que se ve de boutique famosa.</div>
+          <div class="bottom">
+            <div class="price">$79</div>
+            <button class="btn" data-id="np-004" data-name="Night Piece" data-price="79">
+              + Carrito
+            </button>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="promo" id="promo">
+    🎁 <span>-20% <small>HOY</small></span>
+  </div>
+
+  <div class="toast" id="toast">Añadido al carrito</div>
+
+<script>
+  // Back button
+  document.getElementById('backBtn').addEventListener('click', () => {
+    // si hay historial vuelve; si no, va al index
+    if (history.length > 1) history.back();
+    else location.href = "index.html";
+  });
+
+  // Reveal cards on scroll
+  const cards = document.querySelectorAll('.card');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    })
+  },{threshold:.18});
+  cards.forEach(c=>io.observe(c));
+
+  // Filters
+  const pills = document.querySelectorAll('.pill');
+  const grid = document.getElementById('grid');
+
+  pills.forEach(p=>{
+    p.addEventListener('click', ()=>{
+      pills.forEach(x=>x.classList.remove('active'));
+      p.classList.add('active');
+
+      const f = p.dataset.filter;
+      grid.querySelectorAll('.card').forEach(card=>{
+        const cat = card.dataset.cat;
+        const show = (f === "all" || f === cat);
+        card.style.display = show ? "" : "none";
+      });
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+  });
+
+  // Cart (localStorage)
+  const toast = document.getElementById('toast');
+
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(window.__t);
+    window.__t = setTimeout(()=>toast.classList.remove('show'), 1200);
+  }
+
+  function getCart(){
+    try{ return JSON.parse(localStorage.getItem("mf_cart") || "[]"); }
+    catch{ return []; }
+  }
+  function saveCart(cart){
+    localStorage.setItem("mf_cart", JSON.stringify(cart));
+  }
+
+  document.querySelectorAll('.btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = {
+        id: btn.dataset.id,
+        name: btn.dataset.name,
+        price: Number(btn.dataset.price),
+        qty: 1
+      };
+
+      const cart = getCart();
+      const found = cart.find(x=>x.id === item.id);
+      if(found) found.qty += 1;
+      else cart.push(item);
+
+      saveCart(cart);
+      showToast("Añadido al carrito");
+    });
+  });
+
+  // Promo click -> carrito
+  document.getElementById('promo').addEventListener('click', ()=>{
+    location.href = "carrito.html";
+  });
+</script>
 
 </body>
 </html>
