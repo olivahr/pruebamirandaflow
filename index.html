@@ -1,154 +1,220 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Miranda Flow</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Miranda Flow Boutique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-body{
-  font-family: "Montserrat", system-ui, sans-serif;
-  background:
-    radial-gradient(900px 600px at 20% 20%, rgba(0,120,255,.18), transparent 60%),
-    radial-gradient(800px 600px at 80% 80%, rgba(0,255,150,.15), transparent 60%),
-    #050505;
-  color:#fff;
-  overflow-x:hidden;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at top left, #0c1f3a, #020409);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
 
-/* ===== HEADER ===== */
-header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:20px 60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(0,0,0,.35);
-  backdrop-filter: blur(14px);
-  z-index:100;
-}
+    /* ===== NAVBAR ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
 
-.brand{
-  font-size:.75rem;
-  letter-spacing:4px;
-  opacity:.85;
-}
+    .brand {
+      font-weight: 700;
+      letter-spacing: 3px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
 
-nav a{
-  margin-left:28px;
-  font-size:.9rem;
-  font-weight:500;
-  opacity:.85;
-  transition:.3s;
-}
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 30px;
+      font-size: 14px;
+      font-weight: 400;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
 
-nav a:hover{
-  opacity:1;
-}
+    nav a:hover {
+      opacity: 1;
+    }
 
-/* ===== HERO ===== */
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding:140px 80px 80px;
-  position:relative;
-  overflow:hidden;
-}
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 60px;
+      position: relative;
+    }
 
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background:url("img/logo.jpg") center/contain no-repeat;
-  opacity:.07;
-  transform:scale(1.6);
-  filter: blur(1px);
-  animation: floatLogo 14s ease-in-out infinite alternate;
-}
+    /* LOGO GIGANTE DE FONDO */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('logo.jpg') no-repeat center;
+      background-size: 70%;
+      opacity: 0.12;
+      filter: blur(2px);
+    }
 
-@keyframes floatLogo{
-  from{ transform:scale(1.55) translateY(0); }
-  to{ transform:scale(1.65) translateY(-20px); }
-}
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+      animation: fadeUp 1.2s ease forwards;
+    }
 
-.hero-content{
-  position:relative;
-  max-width:720px;
-}
+    .hero h1 {
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 25px;
+    }
 
-.hero h1{
-  font-size:4.8rem;
-  line-height:1.05;
-  letter-spacing:1px;
-  margin-bottom:24px;
-}
+    .hero p {
+      font-size: 20px;
+      font-weight: 300;
+      opacity: 0.9;
+      max-width: 500px;
+    }
 
-.hero p{
-  font-size:1.2rem;
-  opacity:.85;
-  max-width:520px;
-}
+    /* ===== DESCUENTO FLOTANTE ===== */
+    .promo {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 18px;
+      padding: 18px 22px;
+      max-width: 220px;
+      animation: float 3.5s ease-in-out infinite;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      z-index: 90;
+    }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-  header{
-    padding:16px 24px;
-  }
+    .promo span {
+      font-size: 12px;
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
 
-  nav a{
-    margin-left:16px;
-    font-size:.8rem;
-  }
+    .promo h3 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0;
+    }
 
-  .hero{
-    padding:120px 24px 60px;
-  }
+    .promo p {
+      font-size: 13px;
+      opacity: 0.85;
+    }
 
-  .hero h1{
-    font-size:3.2rem;
-  }
-}
-</style>
+    /* ===== ANIMACIONES ===== */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 20px;
+      }
+
+      nav a {
+        margin-left: 18px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 120px 24px;
+      }
+
+      .hero::before {
+        background-size: 110%;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .promo {
+        right: 16px;
+        bottom: 16px;
+        max-width: 190px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="brand">BOUTIQUE</div>
+  <!-- NAVBAR -->
+  <header>
+    <div class="brand">BOUTIQUE</div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="producto.html">Prendas</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="carrito.html">Carrito</a>
+    </nav>
+  </header>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="tienda.html">Prendas</a>
-    <a href="tienda.html">Tienda</a>
-    <a href="carrito.html">Carrito</a>
-  </nav>
-</header>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>MIRANDA<br>FLOW</h1>
+      <p>
+        Ropa con presencia.<br>
+        Estilo que se nota sin hablar.
+      </p>
+    </div>
+  </section>
 
-<section class="hero">
-  <div class="hero-bg"></div>
-
-  <div class="hero-content">
-    <h1>MIRANDA FLOW</h1>
-    <p>
-      Ropa con presencia.<br>
-      Estilo que se nota sin hablar.
-    </p>
+  <!-- PROMO FLOTANTE -->
+  <div class="promo">
+    <span>EXCLUSIVE DROP</span>
+    <h3>-15%</h3>
+    <p>En piezas seleccionadas por tiempo limitado.</p>
   </div>
-</section>
 
 </body>
 </html>
