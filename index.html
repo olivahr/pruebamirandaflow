@@ -2,175 +2,247 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Miranda Flow Boutique</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family:'Inter',sans-serif;
+}
+
+body{
   background:#000;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== HEADER ===== */
+/* ================= HEADER ================= */
 header{
   position:fixed;
-  top:0;left:0;right:0;
-  height:70px;
-  padding:0 22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(0,0,0,.55);
+  top:0;
+  width:100%;
+  height:72px;
+  background:rgba(0,0,0,.82);
   backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-  z-index:1000;
-}
-.brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  justify-content:space-between;
+  padding:0 42px;
+  z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,.05);
 }
-.brand img{
-  width:36px;
-  border-radius:8px;
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
-.brand .text{
+
+.logo img{
+  height:38px;
+}
+
+.logo span{
+  font-weight:600;
+  letter-spacing:.22em;
   font-size:12px;
-  letter-spacing:3px;
-}
-.brand .text b{
-  display:block;
-  font-size:14px;
-  letter-spacing:4px;
+  opacity:.9;
 }
 
 nav a{
-  margin-left:22px;
+  margin-left:30px;
   text-decoration:none;
-  color:rgba(255,255,255,.7);
-  font-size:12px;
-  letter-spacing:3px;
-}
-nav a:hover{color:#fff}
-
-/* ===== HERO ===== */
-.hero{
-  min-height:100vh;
-  padding:120px 8% 80px;
-  position:relative;
-  display:flex;
-  align-items:center;
-}
-.logo-bg{
-  position:absolute;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  opacity:.18;
-}
-.logo-bg img{
-  width:min(900px,90vw);
-  filter:grayscale(100%) contrast(120%);
+  color:#999;
+  font-size:13px;
+  letter-spacing:.18em;
+  transition:.3s;
 }
 
-.hero-card{
-  position:relative;
-  max-width:720px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:28px;
-  padding:48px;
-  backdrop-filter:blur(12px);
-}
-.hero-card small{
-  letter-spacing:4px;
-  color:rgba(255,255,255,.6);
-}
-.hero-card h1{
-  font-size:clamp(46px,6vw,82px);
-  font-weight:900;
-  margin:14px 0;
-}
-.hero-card p{
-  color:rgba(255,255,255,.75);
-  font-size:18px;
-  line-height:1.5;
-}
-.hero-actions{
-  margin-top:26px;
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-}
-.btn{
-  padding:14px 22px;
-  border-radius:14px;
-  font-size:12px;
-  letter-spacing:3px;
-  font-weight:800;
-  text-decoration:none;
-  border:1px solid rgba(255,255,255,.25);
+nav a:hover{
   color:#fff;
 }
-.btn.primary{
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  padding:150px 42px 100px;
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at center, rgba(0,255,200,.08), transparent 60%),
+    url("logo.jpg") center/55% no-repeat;
+  opacity:.22;
+  filter:blur(1.5px);
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, transparent 0%, #000 85%);
+}
+
+.hero-content{
+  position:relative;
+  max-width:560px;
+  z-index:2;
+}
+
+.hero small{
+  letter-spacing:.35em;
+  font-size:12px;
+  color:#aaa;
+}
+
+.hero h1{
+  font-size:68px;
+  font-weight:800;
+  line-height:1.02;
+  margin:18px 0;
+}
+
+.hero p{
+  font-size:16px;
+  color:#ccc;
+  line-height:1.65;
+  max-width:460px;
+}
+
+.hero-buttons{
+  margin-top:36px;
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:15px 28px;
+  border-radius:16px;
+  font-size:13px;
+  letter-spacing:.18em;
+  cursor:pointer;
+  transition:.35s;
+}
+
+.btn-primary{
   background:#fff;
   color:#000;
-}
-.btn:hover{opacity:.9}
-
-/* ===== EXCLUSIVE ===== */
-.section{
-  padding:80px 8%;
-}
-.section h2{
-  font-size:34px;
-  letter-spacing:8px;
-  margin-bottom:12px;
-}
-.section p{
-  color:rgba(255,255,255,.6);
-  margin-bottom:32px;
+  border:none;
 }
 
-.grid{
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(255,255,255,.15);
+}
+
+.btn-outline{
+  background:transparent;
+  border:1px solid #444;
+  color:#fff;
+}
+
+.btn-outline:hover{
+  border-color:#fff;
+}
+
+/* ================= BADGE ================= */
+.badge{
+  position:fixed;
+  bottom:26px;
+  right:26px;
+  background:#fff;
+  color:#000;
+  padding:13px 20px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 12px 40px rgba(0,0,0,.45);
+  z-index:999;
+}
+
+/* ================= SECTIONS ================= */
+section{
+  padding:120px 42px;
+}
+
+.section-title{
+  font-size:52px;
+  font-weight:800;
+  letter-spacing:.28em;
+  margin-bottom:14px;
+}
+
+.section-sub{
+  color:#777;
+  font-size:14px;
+  margin-bottom:46px;
+}
+
+/* ================= EXCLUSIVE ================= */
+.exclusive-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:32px;
 }
-.card{
+
+.exclusive-item{
+  background:#0f0f0f;
   border-radius:22px;
   overflow:hidden;
-  border:1px solid rgba(255,255,255,.1);
-  background:#111;
-  transform:translateY(30px);
+  position:relative;
+  transform:translateY(60px);
   opacity:0;
-  filter:blur(6px);
-  transition:.8s ease;
+  transition:1s cubic-bezier(.16,.84,.44,1);
 }
-.card.show{
-  transform:none;
+
+.exclusive-item.show{
+  transform:translateY(0);
   opacity:1;
-  filter:none;
 }
-.card img{
+
+.exclusive-item img{
   width:100%;
   height:100%;
   object-fit:cover;
+  transition:.7s;
 }
 
-/* ===== FOOTER ===== */
-footer{
-  padding:40px;
-  text-align:center;
-  color:rgba(255,255,255,.35);
+.exclusive-item:hover img{
+  transform:scale(1.1);
+}
+
+.exclusive-item::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.6), transparent 60%);
+}
+
+.exclusive-label{
+  position:absolute;
+  bottom:18px;
+  left:18px;
   font-size:12px;
-  letter-spacing:2px;
+  letter-spacing:.22em;
+  background:rgba(0,0,0,.6);
+  padding:9px 16px;
+  border-radius:999px;
+  z-index:2;
 }
 </style>
 </head>
@@ -178,68 +250,56 @@ footer{
 <body>
 
 <header>
-  <div class="brand">
-    <img src="logo.jpg">
-    <div class="text">
-      <b>BOUTIQUE</b>
-      MIRANDA FLOW
-    </div>
+  <div class="logo">
+    <img src="logo.jpg" alt="Miranda Flow">
+    <span>BOUTIQUE MIRANDA FLOW</span>
   </div>
   <nav>
-    <a href="#top">INICIO</a>
-    <a href="producto.html">TIENDA</a>
+    <a href="index.html">INICIO</a>
+    <a href="tienda.html">TIENDA</a>
     <a href="carrito.html">CARRITO</a>
   </nav>
 </header>
 
-<section class="hero" id="top">
-  <div class="logo-bg">
-    <img src="logo.jpg">
-  </div>
-
-  <div class="hero-card">
-    <small>BOUTIQUE / PRESENCIA / NIVEL</small>
+<section class="hero">
+  <div class="hero-content">
+    <small>BOUTIQUE · PRESENCIA · NIVEL</small>
     <h1>MIRANDA<br>FLOW</h1>
     <p>
       Prendas con presencia.  
       Estilo que se impone sin hablar.  
-      Esto no es una tienda, es un ecosistema.
+      Esto no es una tienda, es la entrada a un ecosistema.
     </p>
 
-    <div class="hero-actions">
-      <a href="prendas.html" class="btn primary">ENTRAR A PRÉNDAS →</a>
-      <a href="#exclusive" class="btn">VER EXCLUSIVE ↓</a>
+    <div class="hero-buttons">
+      <a href="prendas.html"><button class="btn btn-primary">ENTRAR A PRENDAS →</button></a>
+      <button class="btn btn-outline" onclick="document.getElementById('exclusive').scrollIntoView({behavior:'smooth'})">VER EXCLUSIVE ↓</button>
     </div>
   </div>
 </section>
 
-<section class="section" id="exclusive">
-  <h2>EXCLUSIVE</h2>
-  <p>Selección visual premium de muestra.</p>
+<section id="exclusive">
+  <div class="section-title">EXCLUSIVE</div>
+  <div class="section-sub">Drop visual de muestra. Demo con presencia real.</div>
 
-  <div class="grid">
-    <div class="card"><img src="exclusive-1.jpg"></div>
-    <div class="card"><img src="exclusive-2.jpg"></div>
-    <div class="card"><img src="exclusive-3.jpg"></div>
-    <div class="card"><img src="exclusive-4.jpg"></div>
+  <div class="exclusive-grid">
+    <div class="exclusive-item"><img src="exclusive-1.jpg"><div class="exclusive-label">EXCLUSIVE</div></div>
+    <div class="exclusive-item"><img src="exclusive-2.jpg"><div class="exclusive-label">EXCLUSIVE</div></div>
+    <div class="exclusive-item"><img src="exclusive-3.jpg"><div class="exclusive-label">EXCLUSIVE</div></div>
+    <div class="exclusive-item"><img src="exclusive-4.jpg"><div class="exclusive-label">EXCLUSIVE</div></div>
   </div>
 </section>
 
-<footer>
-  © 2025 Miranda Flow Boutique
-</footer>
+<div class="badge">🎁 -20% HOY</div>
 
 <script>
-const cards=document.querySelectorAll('.card');
-const io=new IntersectionObserver(e=>{
-  e.forEach(x=>{
-    if(x.isIntersecting){
-      x.target.classList.add('show');
-      io.unobserve(x.target);
-    }
-  })
-},{threshold:.2});
-cards.forEach(c=>io.observe(c));
+const items=document.querySelectorAll('.exclusive-item');
+const reveal=()=>items.forEach(i=>{
+  const top=i.getBoundingClientRect().top;
+  if(top<window.innerHeight-100)i.classList.add('show');
+});
+window.addEventListener('scroll',reveal);
+reveal();
 </script>
 
 </body>
