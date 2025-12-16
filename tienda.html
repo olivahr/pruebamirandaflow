@@ -3,71 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tienda · Miranda Flow</title>
+<title>Miranda Flow · Tienda</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#f5f5f3;
-  --black:#0b0b0b;
-  --gray:#777;
-  --white:#ffffff;
-}
-
+/* ===== RESET ===== */
 *{margin:0;padding:0;box-sizing:border-box}
 
+/* ===== BASE ===== */
 body{
-  background:var(--bg);
-  color:var(--black);
   font-family:'Inter',sans-serif;
+  background:#f6f4ef;
+  color:#0b0b0b;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
   position:sticky;
   top:0;
-  background:rgba(245,245,243,.95);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid #ddd;
-  z-index:10;
+  z-index:50;
+  background:rgba(246,244,239,.9);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,.08);
 }
 .nav{
-  max-width:1200px;
+  max-width:1400px;
   margin:auto;
-  padding:20px;
+  padding:18px 26px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
 }
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
 }
 .brand img{
-  width:40px;
+  width:34px;
 }
 .brand span{
   font-family:'Playfair Display',serif;
   font-size:22px;
   font-weight:600;
 }
-.nav a{
+.menu{
+  display:flex;
+  gap:30px;
+}
+.menu a{
   text-decoration:none;
-  color:#000;
-  margin-left:22px;
   font-size:14px;
+  color:#000;
 }
 
-/* BACK */
+/* ===== BACK ===== */
 .back{
-  max-width:1200px;
-  margin:30px auto;
-  padding:0 20px;
+  max-width:1400px;
+  margin:26px auto 0;
+  padding:0 26px;
 }
 .back a{
-  width:44px;height:44px;
+  width:42px;
+  height:42px;
   border-radius:50%;
   background:#fff;
   display:flex;
@@ -75,108 +74,115 @@ header{
   justify-content:center;
   text-decoration:none;
   color:#000;
-  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  box-shadow:0 15px 40px rgba(0,0,0,.12);
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{
-  max-width:1200px;
-  margin:40px auto;
-  padding:0 20px;
+  max-width:1400px;
+  margin:70px auto 0;
+  padding:0 26px;
 }
 .hero h1{
   font-family:'Playfair Display',serif;
-  font-size:54px;
-  margin-bottom:10px;
-}
-.hero p{
-  max-width:520px;
-  font-size:16px;
-  color:#444;
+  font-size:60px;
+  letter-spacing:-1px;
 }
 
-/* FILTER */
-.filter{
+/* ===== FILTERS ===== */
+.filters{
+  margin-top:30px;
   display:flex;
   gap:14px;
-  margin-top:30px;
 }
-.filter button{
-  padding:10px 26px;
+.filters button{
+  padding:10px 28px;
   border-radius:40px;
-  border:1px solid #ccc;
+  border:1px solid #cfcfcf;
   background:#fff;
+  font-size:14px;
   cursor:pointer;
+  transition:.3s;
 }
-.filter button.active{
+.filters button.active{
   background:#000;
   color:#fff;
   border-color:#000;
 }
 
-/* COLLECTIONS */
-.section{
-  max-width:1200px;
-  margin:90px auto;
-  padding:0 20px;
-}
-.section h2{
-  font-family:'Playfair Display',serif;
-  font-size:36px;
-  margin-bottom:30px;
-}
+/* ===== COLLECTIONS ===== */
 .collections{
+  max-width:1400px;
+  margin:90px auto 0;
+  padding:0 26px;
+}
+.collections h2{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  margin-bottom:36px;
+}
+.collection-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:34px;
 }
 .collection{
   background:#fff;
-  padding:70px 20px;
-  border-radius:24px;
+  border-radius:28px;
+  padding:90px 20px;
   text-align:center;
   font-family:'Playfair Display',serif;
-  font-size:22px;
-  transition:.4s;
+  font-size:26px;
+  transition:.5s;
 }
 .collection:hover{
-  transform:translateY(-8px);
-  box-shadow:0 25px 50px rgba(0,0,0,.15);
+  transform:translateY(-10px);
+  box-shadow:0 40px 80px rgba(0,0,0,.15);
 }
 
-/* PRODUCTS */
+/* ===== PRODUCTS ===== */
 .products{
+  max-width:1400px;
+  margin:120px auto;
+  padding:0 26px;
+}
+.products h2{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  margin-bottom:44px;
+}
+.product-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:36px;
+  gap:40px;
 }
 .product{
   background:#fff;
   border-radius:24px;
-  padding:20px;
+  padding:22px;
   transition:.4s;
 }
 .product:hover{
-  transform:translateY(-6px);
+  transform:translateY(-8px);
 }
 .product img{
   width:100%;
   border-radius:18px;
 }
 .product h4{
-  margin-top:14px;
+  margin-top:16px;
   font-weight:500;
 }
 .product span{
-  font-size:14px;
+  font-size:13px;
   color:#777;
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
   padding:80px 20px 40px;
   text-align:center;
-  font-size:13px;
+  font-size:12px;
   color:#777;
 }
 </style>
@@ -190,7 +196,7 @@ footer{
       <img src="logo.jpg">
       <span>Miranda Flow</span>
     </div>
-    <div>
+    <div class="menu">
       <a href="index.html">Inicio</a>
       <a href="carrito.html">Carrito</a>
     </div>
@@ -203,20 +209,17 @@ footer{
 
 <section class="hero">
   <h1>Tienda</h1>
-  <p>Selección curada.  
-     No fast fashion.  
-     Sistema Z.</p>
 
-  <div class="filter">
+  <div class="filters">
     <button class="active">Hombre</button>
     <button>Mujer</button>
     <button>Unisex</button>
   </div>
 </section>
 
-<section class="section">
+<section class="collections">
   <h2>Colecciones</h2>
-  <div class="collections">
+  <div class="collection-grid">
     <div class="collection">Hoodies</div>
     <div class="collection">Pantalones</div>
     <div class="collection">Pullovers</div>
@@ -225,34 +228,34 @@ footer{
   </div>
 </section>
 
-<section class="section">
+<section class="products">
   <h2>Selección</h2>
-  <div class="products">
+  <div class="product-grid">
     <div class="product">
-      <img src="exclusive-1.jpg">
+      <img src="p1.jpg">
       <h4>Hoodie Signature</h4>
       <span>Edición limitada</span>
     </div>
     <div class="product">
-      <img src="exclusive-2.jpg">
-      <h4>Pantalón Premium</h4>
-      <span>Textil pesado</span>
+      <img src="p2.jpg">
+      <h4>Pantalón Tailored</h4>
+      <span>Corte premium</span>
     </div>
     <div class="product">
-      <img src="exclusive-3.jpg">
+      <img src="p3.jpg">
       <h4>Conjunto Flow</h4>
-      <span>Colección 01</span>
+      <span>Colección privada</span>
     </div>
     <div class="product">
-      <img src="exclusive-4.jpg">
+      <img src="p4.jpg">
       <h4>Short Minimal</h4>
-      <span>Corte limpio</span>
+      <span>Diseño limpio</span>
     </div>
   </div>
 </section>
 
 <footer>
-  Miranda Flow · Sistema Z
+  © Miranda Flow
 </footer>
 
 </body>
