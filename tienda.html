@@ -12,194 +12,280 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
 }
 
 body{
-  background:#000;
-  color:#fff;
   font-family:'Inter',system-ui;
-  overflow:hidden;
-}
-
-/* ===== FONDO LUJO ===== */
-.bg{
-  position:fixed;
-  inset:-20%;
-  background:
-    radial-gradient(900px 600px at 30% 20%, rgba(255,255,255,.08), transparent 60%),
-    radial-gradient(900px 600px at 80% 80%, rgba(255,215,0,.08), transparent 65%);
-  filter:blur(40px);
-  z-index:-1;
-}
-
-/* ===== FLECHA SISTEMA Z ===== */
-.back{
-  position:fixed;
-  top:20px;
-  left:20px;
-  width:46px;
-  height:46px;
-  border-radius:14px;
-  background:rgba(255,255,255,.12);
-  backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.25);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  text-decoration:none;
-  font-size:20px;
-  z-index:10;
+  background:#f6f2ed;
+  color:#111;
 }
 
 /* ===== HEADER ===== */
 header{
-  text-align:center;
-  padding-top:90px;
-}
-
-header h1{
-  font-family:'Playfair Display',serif;
-  font-size:42px;
-  letter-spacing:2px;
-}
-
-header p{
-  margin-top:10px;
-  font-size:14px;
-  color:rgba(255,255,255,.6);
-  letter-spacing:2px;
-}
-
-/* ===== SLIDER ===== */
-.slider{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:65%;
+  background:#fff;
+  padding:18px 26px;
   display:flex;
   align-items:center;
-  justify-content:center;
-}
-
-.track{
-  display:flex;
-  gap:80px;
-  transition:transform .8s cubic-bezier(.22,.8,.22,1);
-}
-
-.card{
-  width:280px;
-  height:360px;
-  border-radius:40px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter:blur(20px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-family:'Playfair Display',serif;
-  font-size:26px;
-  letter-spacing:2px;
-  cursor:pointer;
-  transition:.6s;
-}
-
-.card.active{
-  transform:scale(1.15);
-  border-color:rgba(255,215,0,.6);
-  box-shadow:0 40px 120px rgba(255,215,0,.15);
-}
-
-.card span{
-  opacity:.85;
-}
-
-/* ===== FLECHAS ===== */
-.nav{
-  position:fixed;
-  bottom:40px;
-  width:100%;
-  display:flex;
   justify-content:space-between;
-  padding:0 40px;
-  pointer-events:none;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 6px 30px rgba(0,0,0,.06);
 }
 
-.arrow{
-  pointer-events:auto;
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  background:rgba(255,255,255,.12);
-  backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.25);
+.brand{
   display:flex;
   align-items:center;
-  justify-content:center;
-  font-size:24px;
+  gap:12px;
+}
+
+.brand img{
+  width:42px;
+  border-radius:10px;
+}
+
+.brand span{
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  letter-spacing:1px;
+}
+
+nav{
+  display:flex;
+  gap:24px;
+}
+
+nav a{
+  text-decoration:none;
+  color:#111;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+/* ===== HERO ===== */
+.hero{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  align-items:center;
+  padding:80px 8%;
+  background:linear-gradient(135deg,#e8dfd5,#f6f2ed);
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:56px;
+  line-height:1.05;
+}
+
+.hero p{
+  margin-top:20px;
+  font-size:16px;
+  max-width:420px;
+  color:#444;
+}
+
+.hero .actions{
+  margin-top:30px;
+  display:flex;
+  gap:14px;
+}
+
+.hero .actions a{
+  padding:14px 28px;
+  border-radius:40px;
+  font-size:14px;
+  letter-spacing:1px;
+  text-decoration:none;
+}
+
+.primary{
+  background:#111;
+  color:#fff;
+}
+
+.secondary{
+  border:1px solid #111;
+  color:#111;
+}
+
+.hero-img{
+  width:100%;
+  height:420px;
+  border-radius:28px;
+  background:url('exclusive-1.jpg') center/cover no-repeat;
+}
+
+/* ===== COLECCIONES ===== */
+.section{
+  padding:80px 8%;
+}
+
+.section h2{
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  margin-bottom:30px;
+}
+
+.collections{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:28px;
+}
+
+.collection{
+  background:#fff;
+  border-radius:24px;
+  padding:20px;
+  text-align:center;
+  transition:.4s;
   cursor:pointer;
-  transition:.3s;
 }
 
-.arrow:hover{
-  background:rgba(255,255,255,.25);
+.collection:hover{
+  transform:translateY(-6px);
+  box-shadow:0 30px 80px rgba(0,0,0,.12);
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-  .card{width:220px;height:300px;font-size:22px}
-  header h1{font-size:34px}
+.collection img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:18px;
+}
+
+.collection h3{
+  margin-top:14px;
+  font-size:15px;
+  letter-spacing:1px;
+}
+
+/* ===== PRODUCTOS ===== */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+
+.product{
+  background:#fff;
+  border-radius:26px;
+  overflow:hidden;
+  transition:.4s;
+}
+
+.product:hover{
+  transform:translateY(-8px);
+  box-shadow:0 40px 100px rgba(0,0,0,.15);
+}
+
+.product img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
+
+.product-info{
+  padding:18px;
+}
+
+.product-info h4{
+  font-size:15px;
+  margin-bottom:6px;
+}
+
+.product-info span{
+  font-size:14px;
+  color:#777;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  padding:40px;
+  text-align:center;
+  font-size:13px;
+  color:#666;
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-
-<a href="index.html" class="back">←</a>
-
 <header>
-  <h1>Tienda</h1>
-  <p>Miranda Flow · Luxury Mode</p>
+  <div class="brand">
+    <img src="logo.jpg">
+    <span>Miranda Flow</span>
+  </div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="carrito.html">Carrito</a>
+  </nav>
 </header>
 
-<div class="slider">
-  <div class="track" id="track">
-    <div class="card active"><span>JURI</span></div>
-    <div class="card"><span>PANTALÓN</span></div>
-    <div class="card"><span>PULÓVER</span></div>
-    <div class="card"><span>CONJUNTO</span></div>
-    <div class="card"><span>SHORT</span></div>
+<section class="hero">
+  <div>
+    <h1>Estilo que<br>impone presencia</h1>
+    <p>
+      Colecciones seleccionadas. Diseño, nivel y carácter.
+      Esto no es fast fashion. Es identidad.
+    </p>
+    <div class="actions">
+      <a href="#colecciones" class="primary">Ver colecciones</a>
+      <a href="#productos" class="secondary">Destacados</a>
+    </div>
   </div>
-</div>
+  <div class="hero-img"></div>
+</section>
 
-<div class="nav">
-  <div class="arrow" onclick="prev()">‹</div>
-  <div class="arrow" onclick="next()">›</div>
-</div>
+<section class="section" id="colecciones">
+  <h2>Nuestras colecciones</h2>
+  <div class="collections">
+    <div class="collection"><img src="exclusive-1.jpg"><h3>Hoodies</h3></div>
+    <div class="collection"><img src="exclusive-2.jpg"><h3>Pantalones</h3></div>
+    <div class="collection"><img src="exclusive-3.jpg"><h3>Conjuntos</h3></div>
+    <div class="collection"><img src="exclusive-4.jpg"><h3>Shorts</h3></div>
+  </div>
+</section>
 
-<script>
-let index = 0;
-const cards = document.querySelectorAll('.card');
-const track = document.getElementById('track');
+<section class="section" id="productos">
+  <h2>Piezas destacadas</h2>
+  <div class="products">
+    <div class="product">
+      <img src="exclusive-1.jpg">
+      <div class="product-info">
+        <h4>Hoodie Signature</h4>
+        <span>Edición limitada</span>
+      </div>
+    </div>
 
-function update(){
-  cards.forEach(c=>c.classList.remove('active'));
-  cards[index].classList.add('active');
-  track.style.transform = translateX(${-index * 360}px);
-}
+    <div class="product">
+      <img src="exclusive-2.jpg">
+      <div class="product-info">
+        <h4>Pantalón Premium</h4>
+        <span>Corte exclusivo</span>
+      </div>
+    </div>
 
-function next(){
-  if(index < cards.length-1){ index++; update(); }
-}
+    <div class="product">
+      <img src="exclusive-3.jpg">
+      <div class="product-info">
+        <h4>Conjunto Flow</h4>
+        <span>Presencia total</span>
+      </div>
+    </div>
 
-function prev(){
-  if(index > 0){ index--; update(); }
-}
-</script>
+    <div class="product">
+      <img src="exclusive-4.jpg">
+      <div class="product-info">
+        <h4>Short Urbano</h4>
+        <span>Street luxury</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © Miranda Flow · Sistema Z
+</footer>
 
 </body>
 </html>
