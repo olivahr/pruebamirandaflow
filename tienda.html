@@ -9,130 +9,248 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  font-family:Inter,system-ui;
+  font-family:'Inter',sans-serif;
   background:#000;
   color:#fff;
+  overflow-x:hidden;
 }
 
-/* Background */
+/* Background glow */
 .bg{
   position:fixed;
   inset:-30%;
   background:
-    radial-gradient(800px 600px at 20% 30%, #0f3b2e55, transparent),
-    radial-gradient(600px 500px at 80% 70%, #1a1a1a, transparent);
-  filter:blur(60px);
+    radial-gradient(900px 500px at 20% 10%, rgba(0,120,255,.15), transparent),
+    radial-gradient(800px 500px at 80% 80%, rgba(0,255,180,.12), transparent);
+  filter:blur(120px);
   z-index:-1;
 }
 
 /* Header */
 header{
+  position:fixed;
+  top:0;left:0;width:100%;
   display:flex;
   align-items:center;
-  padding:20px 24px;
+  justify-content:space-between;
+  padding:20px 32px;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  z-index:10;
 }
-.back{
-  font-size:26px;
-  text-decoration:none;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand img{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+}
+.brand span{
+  font-weight:800;
+  letter-spacing:.2em;
+  font-size:.75rem;
+  opacity:.85;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+.nav a{
   color:#fff;
-  opacity:.7;
+  text-decoration:none;
+  font-size:.85rem;
+  letter-spacing:.12em;
+  opacity:.75;
   transition:.3s;
 }
-.back:hover{opacity:1;transform:translateX(-4px)}
+.nav a:hover{opacity:1}
 
-.brand{
-  margin-left:16px;
-  font-weight:700;
-  letter-spacing:.12em;
+/* Back arrow */
+.back{
+  position:fixed;
+  top:92px;
+  left:24px;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+  font-size:1.2rem;
+  cursor:pointer;
+  transition:.3s;
+  z-index:5;
+}
+.back:hover{background:rgba(255,255,255,.18)}
+
+/* Page title */
+.hero{
+  padding:160px 10vw 80px;
+}
+.hero h1{
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  font-weight:800;
+  letter-spacing:.15em;
+}
+.hero p{
+  margin-top:16px;
+  max-width:520px;
+  opacity:.7;
+  line-height:1.6;
 }
 
-/* Grid */
-.store{
-  max-width:1200px;
-  margin:60px auto;
-  padding:0 24px;
-}
-
-.store h1{
-  font-size:clamp(32px,6vw,64px);
-  margin-bottom:40px;
-}
-
+/* Products grid */
 .grid{
+  padding:0 10vw 120px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
 }
 
+/* Product card */
 .card{
-  background:#111;
-  border-radius:22px;
-  padding:20px;
-  text-decoration:none;
-  color:#fff;
-  transition:.4s;
-  animation:fadeUp 1s ease forwards;
+  background:rgba(255,255,255,.04);
+  border-radius:24px;
+  overflow:hidden;
+  transition:.5s;
+  position:relative;
 }
+.card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.12),transparent);
+  opacity:0;
+  transition:.5s;
+}
+.card:hover::before{opacity:1}
+
 .card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 60px #000;
+  transform:translateY(-10px);
+  background:rgba(255,255,255,.08);
 }
 
 .card img{
   width:100%;
-  border-radius:16px;
-  margin-bottom:16px;
+  aspect-ratio:1/1;
+  object-fit:cover;
 }
 
-.card h3{
-  font-size:18px;
-  margin-bottom:6px;
+.card-body{
+  padding:22px;
 }
-.card span{
-  opacity:.7;
-  font-size:14px;
+.card-body h3{
+  font-size:1rem;
+  letter-spacing:.12em;
+  margin-bottom:10px;
+}
+.card-body p{
+  font-size:.85rem;
+  opacity:.6;
+  margin-bottom:18px;
 }
 
-/* Anim */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:none}
+.card-body a{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  text-decoration:none;
+  font-size:.75rem;
+  letter-spacing:.14em;
+  transition:.3s;
+}
+.card-body a:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* Footer space */
+footer{
+  height:120px;
 }
 </style>
 </head>
 
 <body>
+
 <div class="bg"></div>
 
 <header>
-  <a href="index.html" class="back">←</a>
-  <div class="brand">BOUTIQUE · MIRANDA FLOW</div>
+  <div class="brand">
+    <img src="logo.jpg" alt="Miranda Flow">
+    <span>BOUTIQUE · MIRANDA FLOW</span>
+  </div>
+  <nav class="nav">
+    <a href="index.html">INICIO</a>
+    <a href="prendas.html">PRENDAS</a>
+    <a href="carrito.html">CARRITO</a>
+  </nav>
 </header>
 
-<section class="store">
-  <h1>Tienda</h1>
+<a href="index.html" class="back">←</a>
 
-  <div class="grid">
-    <a href="producto.html" class="card">
-      <img src="hoodie.jpg" alt="">
-      <h3>Emotions Never Die</h3>
-      <span>Hoodie · $120</span>
-    </a>
-
-    <a href="producto.html" class="card">
-      <img src="jeans.jpg" alt="">
-      <h3>Denim Flow</h3>
-      <span>Jean · $140</span>
-    </a>
-
-    <a href="producto.html" class="card">
-      <img src="hoodie2.jpg" alt="">
-      <h3>Midnight Drop</h3>
-      <span>Hoodie · $130</span>
-    </a>
-  </div>
+<section class="hero">
+  <h1>TIENDA</h1>
+  <p>
+    Selección visual de productos.  
+    Esta es una maqueta funcional del ecosistema.  
+    Diseño real, estructura real, experiencia real.
+  </p>
 </section>
+
+<section class="grid">
+
+  <div class="card">
+    <img src="exclusive-1.jpg" alt="">
+    <div class="card-body">
+      <h3>PIEZA EXCLUSIVA</h3>
+      <p>Diseño con presencia. Nivel boutique.</p>
+      <a href="producto.html">VER DETALLE →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="exclusive-2.jpg" alt="">
+    <div class="card-body">
+      <h3>COLECCIÓN LIMITADA</h3>
+      <p>Entrada a una línea especial.</p>
+      <a href="producto.html">VER DETALLE →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="exclusive-3.jpg" alt="">
+    <div class="card-body">
+      <h3>DROP SELECTO</h3>
+      <p>Pieza de muestra del ecosistema.</p>
+      <a href="producto.html">VER DETALLE →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="exclusive-4.jpg" alt="">
+    <div class="card-body">
+      <h3>EDICIÓN ESPECIAL</h3>
+      <p>Visual demo con estética premium.</p>
+      <a href="producto.html">VER DETALLE →</a>
+    </div>
+  </div>
+
+</section>
+
+<footer></footer>
 
 </body>
 </html>
