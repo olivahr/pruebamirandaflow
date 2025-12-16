@@ -2,183 +2,143 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<title>Tienda | Miranda Flow</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tienda | Miranda Flow Boutique</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
 body{
-  font-family:'Inter',sans-serif;
+  font-family:'Inter',system-ui;
   background:#000;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* Background glow */
+/* ===== FONDO SISTEMA Z ===== */
 .bg{
   position:fixed;
-  inset:-30%;
+  inset:-20%;
   background:
-    radial-gradient(900px 500px at 20% 10%, rgba(0,120,255,.15), transparent),
-    radial-gradient(800px 500px at 80% 80%, rgba(0,255,180,.12), transparent);
-  filter:blur(120px);
+    radial-gradient(700px 500px at 20% 20%, rgba(255,255,255,.08), transparent 60%),
+    radial-gradient(700px 500px at 80% 70%, rgba(0,255,200,.08), transparent 65%);
+  filter:blur(24px);
   z-index:-1;
 }
 
-/* Header */
-header{
-  position:fixed;
-  top:0;left:0;width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:20px 32px;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-  z-index:10;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.brand img{
-  width:42px;
-  height:42px;
-  border-radius:10px;
-}
-.brand span{
-  font-weight:800;
-  letter-spacing:.2em;
-  font-size:.75rem;
-  opacity:.85;
-}
-
-.nav{
-  display:flex;
-  align-items:center;
-  gap:28px;
-}
-.nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:.85rem;
-  letter-spacing:.12em;
-  opacity:.75;
-  transition:.3s;
-}
-.nav a:hover{opacity:1}
-
-/* Back arrow */
+/* ===== FLECHA LIMPIA (NO TEXTO) ===== */
 .back{
   position:fixed;
-  top:92px;
-  left:24px;
+  top:18px;
+  left:18px;
   width:46px;
   height:46px;
-  border-radius:50%;
+  border-radius:14px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.25);
   display:flex;
   align-items:center;
   justify-content:center;
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(10px);
-  font-size:1.2rem;
-  cursor:pointer;
-  transition:.3s;
-  z-index:5;
+  text-decoration:none;
+  color:#fff;
+  font-size:20px;
+  z-index:50;
+  transition:.2s;
 }
-.back:hover{background:rgba(255,255,255,.18)}
-
-/* Page title */
-.hero{
-  padding:160px 10vw 80px;
-}
-.hero h1{
-  font-size:clamp(2.5rem,6vw,4.5rem);
-  font-weight:800;
-  letter-spacing:.15em;
-}
-.hero p{
-  margin-top:16px;
-  max-width:520px;
-  opacity:.7;
-  line-height:1.6;
+.back:hover{
+  background:rgba(255,255,255,.22);
+  transform:translateX(-2px);
 }
 
-/* Products grid */
+/* ===== HEADER ===== */
+header{
+  padding:80px 20px 40px;
+  text-align:center;
+}
+
+header h1{
+  font-size:36px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+header p{
+  margin-top:12px;
+  font-size:15px;
+  color:rgba(255,255,255,.65);
+}
+
+/* ===== GRID ===== */
 .grid{
-  padding:0 10vw 120px;
+  max-width:1100px;
+  margin:0 auto;
+  padding:20px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:32px;
+  gap:26px;
 }
 
-/* Product card */
+/* ===== TARJETAS ===== */
 .card{
-  background:rgba(255,255,255,.04);
-  border-radius:24px;
-  overflow:hidden;
-  transition:.5s;
   position:relative;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:26px;
+  overflow:hidden;
+  cursor:pointer;
+  backdrop-filter:blur(16px);
+  transition:.3s;
 }
-.card::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.12),transparent);
-  opacity:0;
-  transition:.5s;
-}
-.card:hover::before{opacity:1}
 
 .card:hover{
-  transform:translateY(-10px);
-  background:rgba(255,255,255,.08);
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.35);
 }
 
 .card img{
   width:100%;
-  aspect-ratio:1/1;
+  height:260px;
   object-fit:cover;
+  display:block;
 }
 
-.card-body{
-  padding:22px;
-}
-.card-body h3{
-  font-size:1rem;
-  letter-spacing:.12em;
-  margin-bottom:10px;
-}
-.card-body p{
-  font-size:.85rem;
-  opacity:.6;
-  margin-bottom:18px;
+.card .info{
+  padding:18px;
 }
 
-.card-body a{
-  display:inline-block;
-  padding:10px 18px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.25);
-  color:#fff;
-  text-decoration:none;
-  font-size:.75rem;
-  letter-spacing:.14em;
-  transition:.3s;
-}
-.card-body a:hover{
-  background:#fff;
-  color:#000;
+.card h3{
+  font-size:18px;
+  font-weight:600;
 }
 
-/* Footer space */
-footer{
-  height:120px;
+.card span{
+  display:block;
+  margin-top:6px;
+  font-size:13px;
+  color:rgba(255,255,255,.6);
+}
+
+/* ===== EFECTO ENTRADA ===== */
+.fade{
+  animation:fadeUp .6s ease forwards;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(30px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  header h1{font-size:30px}
 }
 </style>
 </head>
@@ -187,70 +147,49 @@ footer{
 
 <div class="bg"></div>
 
-<header>
-  <div class="brand">
-    <img src="logo.jpg" alt="Miranda Flow">
-    <span>BOUTIQUE · MIRANDA FLOW</span>
-  </div>
-  <nav class="nav">
-    <a href="index.html">INICIO</a>
-    <a href="prendas.html">PRENDAS</a>
-    <a href="carrito.html">CARRITO</a>
-  </nav>
-</header>
-
+<!-- Flecha: vuelve al index (Sistema Z) -->
 <a href="index.html" class="back">←</a>
 
-<section class="hero">
-  <h1>TIENDA</h1>
-  <p>
-    Selección visual de productos.  
-    Esta es una maqueta funcional del ecosistema.  
-    Diseño real, estructura real, experiencia real.
-  </p>
-</section>
+<header>
+  <h1>Tienda</h1>
+  <p>Explora piezas del ecosistema Miranda Flow</p>
+</header>
 
 <section class="grid">
 
-  <div class="card">
+  <div class="card fade" onclick="location.href='producto.html'">
     <img src="exclusive-1.jpg" alt="">
-    <div class="card-body">
-      <h3>PIEZA EXCLUSIVA</h3>
-      <p>Diseño con presencia. Nivel boutique.</p>
-      <a href="producto.html">VER DETALLE →</a>
+    <div class="info">
+      <h3>Pieza Exclusiva</h3>
+      <span>Edición limitada</span>
     </div>
   </div>
 
-  <div class="card">
+  <div class="card fade" style="animation-delay:.1s" onclick="location.href='producto.html'">
     <img src="exclusive-2.jpg" alt="">
-    <div class="card-body">
-      <h3>COLECCIÓN LIMITADA</h3>
-      <p>Entrada a una línea especial.</p>
-      <a href="producto.html">VER DETALLE →</a>
+    <div class="info">
+      <h3>Colección Selecta</h3>
+      <span>Presencia · Nivel</span>
     </div>
   </div>
 
-  <div class="card">
+  <div class="card fade" style="animation-delay:.2s" onclick="location.href='producto.html'">
     <img src="exclusive-3.jpg" alt="">
-    <div class="card-body">
-      <h3>DROP SELECTO</h3>
-      <p>Pieza de muestra del ecosistema.</p>
-      <a href="producto.html">VER DETALLE →</a>
+    <div class="info">
+      <h3>Drop Visual</h3>
+      <span>Demo del ecosistema</span>
     </div>
   </div>
 
-  <div class="card">
+  <div class="card fade" style="animation-delay:.3s" onclick="location.href='producto.html'">
     <img src="exclusive-4.jpg" alt="">
-    <div class="card-body">
-      <h3>EDICIÓN ESPECIAL</h3>
-      <p>Visual demo con estética premium.</p>
-      <a href="producto.html">VER DETALLE →</a>
+    <div class="info">
+      <h3>Pieza Sistema Z</h3>
+      <span>Acceso interno</span>
     </div>
   </div>
 
 </section>
-
-<footer></footer>
 
 </body>
 </html>
