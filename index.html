@@ -2,275 +2,262 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Miranda Flow Boutique</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Montserrat',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
 }
 
 body{
-  background:#000;
-  color:#fff;
-  overflow-x:hidden;
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
 }
 
-/* ===== NAV ===== */
-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:20px 60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(12px);
-  z-index:1000;
+/* ---------- HEADER ---------- */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 40px;
+    background:rgba(0,0,0,.6);
+    backdrop-filter:blur(12px);
+    z-index:100;
 }
 
-nav .brand{
-  display:flex;
-  align-items:center;
-  gap:15px;
+.logo-small{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+    letter-spacing:3px;
 }
 
-nav img{
-  height:40px;
+.logo-small img{
+    height:36px;
 }
 
-nav span{
-  letter-spacing:4px;
-  font-size:12px;
-  opacity:.8;
+nav a{
+    margin-left:30px;
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    letter-spacing:2px;
+    opacity:.85;
 }
 
-nav ul{
-  list-style:none;
-  display:flex;
-  gap:30px;
+nav a:hover{
+    opacity:1;
 }
 
-nav ul li a{
-  text-decoration:none;
-  color:#fff;
-  font-size:14px;
-  letter-spacing:2px;
-  position:relative;
-}
-
-nav ul li a::after{
-  content:'';
-  position:absolute;
-  width:0;
-  height:2px;
-  background:#fff;
-  bottom:-6px;
-  left:0;
-  transition:.3s;
-}
-
-nav ul li a:hover::after{
-  width:100%;
-}
-
-/* ===== HERO ===== */
+/* ---------- HERO ---------- */
 .hero{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  padding:0 80px;
-  position:relative;
+    min-height:100vh;
+    padding-top:120px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:left;
 }
 
+/* LOGO GIGANTE FONDO */
 .hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at bottom,#0f3d2e,#000 70%);
-  z-index:-2;
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at center, rgba(0,0,0,.4), #000 70%),
+        url("logo.jpg") center/70% no-repeat;
+    opacity:.18;
+    animation:floatLogo 12s ease-in-out infinite;
 }
 
-.hero::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:url("logo.jpg") center/70% no-repeat;
-  opacity:0.08;
-  z-index:-1;
+@keyframes floatLogo{
+    0%{transform:scale(1) translateY(0);}
+    50%{transform:scale(1.03) translateY(-10px);}
+    100%{transform:scale(1) translateY(0);}
 }
 
 .hero-content{
-  max-width:700px;
+    position:relative;
+    max-width:900px;
+    padding:40px;
 }
 
 .hero h1{
-  font-size:90px;
-  font-weight:900;
-  line-height:1;
+    font-size:clamp(48px,8vw,90px);
+    font-weight:900;
+    letter-spacing:4px;
 }
 
 .hero p{
-  margin-top:20px;
-  font-size:20px;
-  opacity:.85;
-  max-width:480px;
+    margin-top:20px;
+    font-size:18px;
+    max-width:520px;
+    line-height:1.6;
+    opacity:.85;
 }
 
-.hero .cta{
-  margin-top:40px;
-  display:inline-block;
-  padding:16px 40px;
-  border:1px solid #fff;
-  text-decoration:none;
-  color:#fff;
-  letter-spacing:3px;
-  transition:.4s;
+.hero button{
+    margin-top:40px;
+    padding:16px 42px;
+    background:none;
+    border:1px solid #fff;
+    color:#fff;
+    letter-spacing:4px;
+    cursor:pointer;
 }
 
-.hero .cta:hover{
-  background:#fff;
-  color:#000;
+.hero button:hover{
+    background:#fff;
+    color:#000;
 }
 
-/* ===== EXCLUSIVE ===== */
+/* ---------- DESCUENTO FLOTANTE ---------- */
+.discount{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    background:#fff;
+    color:#000;
+    padding:16px 26px;
+    border-radius:40px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,.6);
+    animation:pulse 2s infinite;
+    z-index:90;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
+}
+
+/* ---------- EXCLUSIVAS ---------- */
 .exclusive{
-  padding:120px 80px;
+    padding:120px 8vw;
 }
 
 .exclusive h2{
-  font-size:42px;
-  margin-bottom:40px;
-  letter-spacing:4px;
+    font-size:36px;
+    letter-spacing:4px;
+    margin-bottom:60px;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:40px;
 }
 
 .card{
-  position:relative;
-  overflow:hidden;
-  border-radius:12px;
+    position:relative;
+    border-radius:20px;
+    overflow:hidden;
+    background:#111;
 }
 
 .card img{
-  width:100%;
-  height:420px;
-  object-fit:cover;
-  transition:.6s;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
 }
 
 .card:hover img{
-  transform:scale(1.08);
+    transform:scale(1.08);
+    filter:brightness(.75);
 }
 
 .card span{
-  position:absolute;
-  bottom:20px;
-  left:20px;
-  font-size:18px;
-  font-weight:700;
-  letter-spacing:2px;
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    font-weight:700;
+    letter-spacing:2px;
 }
 
-/* ===== FLOATING PROMO ===== */
-.promo{
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  background:#fff;
-  color:#000;
-  padding:18px 26px;
-  border-radius:40px;
-  font-weight:700;
-  letter-spacing:2px;
-  animation:float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-  nav{
-    padding:15px 30px;
-  }
-  .hero{
-    padding:0 30px;
-  }
-  .hero h1{
-    font-size:60px;
-  }
+/* ---------- FOOTER ---------- */
+footer{
+    padding:40px;
+    text-align:center;
+    opacity:.5;
+    font-size:12px;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="brand">
-    <img src="logo.jpg" alt="Miranda Flow">
-    <span>BOUTIQUE</span>
-  </div>
-
-  <ul>
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="producto.html">Prendas</a></li>
-    <li><a href="producto.html">Tienda</a></li>
-    <li><a href="carrito.html">Carrito</a></li>
-  </ul>
-</nav>
+<header>
+    <div class="logo-small">
+        <img src="logo.jpg" alt="Miranda Flow">
+        BOUTIQUE
+    </div>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="producto.html">Prendas</a>
+        <a href="producto.html">Tienda</a>
+        <a href="carrito.html">Carrito</a>
+    </nav>
+</header>
 
 <section class="hero">
-  <div class="hero-content">
-    <h1>MIRANDA<br>FLOW</h1>
-    <p>Ropa con presencia. Estilo que se nota sin hablar.</p>
-    <a href="producto.html" class="cta">VER PRENDAS</a>
-  </div>
+    <div class="hero-content">
+        <h1>MIRANDA<br>FLOW</h1>
+        <p>
+            Prendas con presencia.<br>
+            Estilo que se impone sin hablar.
+        </p>
+        <button onclick="location.href='producto.html'">VER PRENDAS</button>
+    </div>
 </section>
 
 <section class="exclusive">
-  <h2>EXCLUSIVE</h2>
-
-  <div class="grid">
-    <div class="card">
-      <img src="exclusive-1.jpg">
-      <span>EXCLUSIVE I</span>
+    <h2>EXCLUSIVAS</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="exclusive-1.jpg">
+            <span>EXCLUSIVE 01</span>
+        </div>
+        <div class="card">
+            <img src="exclusive-2.jpg">
+            <span>EXCLUSIVE 02</span>
+        </div>
+        <div class="card">
+            <img src="exclusive-3.jpg">
+            <span>EXCLUSIVE 03</span>
+        </div>
+        <div class="card">
+            <img src="exclusive-4.jpg">
+            <span>EXCLUSIVE 04</span>
+        </div>
     </div>
-
-    <div class="card">
-      <img src="exclusive-2.jpg">
-      <span>EXCLUSIVE II</span>
-    </div>
-
-    <div class="card">
-      <img src="exclusive-3.jpg">
-      <span>EXCLUSIVE III</span>
-    </div>
-
-    <div class="card">
-      <img src="exclusive-4.jpg">
-      <span>EXCLUSIVE IV</span>
-    </div>
-  </div>
 </section>
 
-<div class="promo">
-  🎁 -20% HOY
+<div class="discount">
+    🎁 -20% HOY
 </div>
+
+<footer>
+    © Miranda Flow Boutique — Sistema Z
+</footer>
 
 </body>
 </html>
