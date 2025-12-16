@@ -5,7 +5,6 @@
 <title>Tienda | Miranda Flow</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
@@ -13,7 +12,7 @@
 
 body{
   font-family:'Inter',sans-serif;
-  background:#f7f7f5;
+  background:#f5f3ee;
   color:#111;
 }
 
@@ -21,15 +20,14 @@ body{
 header{
   position:sticky;
   top:0;
-  z-index:10;
-  background:rgba(247,247,245,.9);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(0,0,0,.06);
+  background:#f5f3ee;
+  z-index:20;
+  border-bottom:1px solid rgba(0,0,0,.08);
 }
 .nav{
-  max-width:1200px;
+  max-width:1300px;
   margin:auto;
-  padding:20px 26px;
+  padding:22px 28px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -44,13 +42,12 @@ header{
 .brand img{
   width:36px;
   height:36px;
-  border-radius:10px;
-  filter:grayscale(100%);
+  border-radius:8px;
 }
 .nav a{
-  margin-left:26px;
-  font-size:13px;
-  letter-spacing:.14em;
+  margin-left:30px;
+  font-size:12px;
+  letter-spacing:.18em;
   text-transform:uppercase;
   color:#111;
 }
@@ -58,73 +55,86 @@ header{
 /* BACK */
 .back{
   position:fixed;
-  top:92px;
+  top:100px;
   left:22px;
   width:46px;
   height:46px;
   border-radius:50%;
-  background:rgba(0,0,0,.06);
+  background:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:20px;
   cursor:pointer;
-  transition:.3s;
-  z-index:5;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
-.back:hover{transform:translateX(-4px)}
 
 /* HERO */
 .hero{
-  max-width:1200px;
+  max-width:1300px;
   margin:auto;
-  padding:120px 26px 70px;
+  padding:140px 28px 60px;
 }
 .hero h1{
   font-family:'Playfair Display',serif;
-  font-size:52px;
-  margin-bottom:20px;
-}
-.hero p{
-  max-width:520px;
-  line-height:1.7;
-  color:#333;
+  font-size:64px;
 }
 
-/* CATEGORY GRID */
-.grid{
-  max-width:1200px;
+/* GENDER */
+.gender{
+  display:flex;
+  gap:18px;
+  margin-top:40px;
+}
+.gender button{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.15);
+  padding:14px 28px;
+  border-radius:40px;
+  font-size:14px;
+  cursor:pointer;
+}
+.gender button.active{
+  background:#111;
+  color:#fff;
+}
+
+/* COLLECTIONS */
+.collections{
+  max-width:1300px;
   margin:auto;
-  padding:20px 26px 120px;
+  padding:40px 28px 120px;
+}
+.collections h2{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  margin-bottom:40px;
+}
+
+.collection-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:30px;
 }
 
-/* CARDS */
-.card{
+.collection{
   background:#fff;
-  border-radius:26px;
-  padding:46px 20px;
+  border-radius:22px;
+  padding:40px 20px;
   text-align:center;
-  box-shadow:0 30px 60px rgba(0,0,0,.08);
-  cursor:pointer;
-  transition:.45s ease;
-}
-.card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 45px 90px rgba(0,0,0,.14);
-}
-.card h3{
+  font-size:18px;
   font-family:'Playfair Display',serif;
-  font-size:22px;
-  font-weight:500;
+  cursor:pointer;
+  transition:.4s;
+}
+.collection:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 60px rgba(0,0,0,.15);
 }
 
-/* PRODUCTS VIEW */
+/* PRODUCTS */
 .products{
   display:none;
-  animation:fadeUp .6s ease forwards;
 }
 .products h2{
   font-family:'Playfair Display',serif;
@@ -138,44 +148,29 @@ header{
 }
 .product{
   background:#fff;
-  height:300px;
-  border-radius:26px;
-  box-shadow:0 30px 60px rgba(0,0,0,.08);
+  height:320px;
+  border-radius:22px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:14px;
-  letter-spacing:.12em;
+  color:#999;
+  letter-spacing:.18em;
   text-transform:uppercase;
-  color:#777;
-  transition:.4s;
-}
-.product:hover{
-  transform:translateY(-6px);
-  box-shadow:0 40px 80px rgba(0,0,0,.12);
 }
 
-/* ANIMATIONS */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
+/* ANIM */
+.fadeIn{
+  animation:fade .6s ease forwards;
+}
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
   to{opacity:1;transform:translateY(0)}
-}
-
-.fade{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:120px;
-  background:linear-gradient(to top,#f7f7f5,transparent);
-  pointer-events:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACK -->
 <div class="back" onclick="goBack()">←</div>
 
 <header>
@@ -191,33 +186,34 @@ header{
   </div>
 </header>
 
-<!-- MAIN VIEW -->
 <section id="main">
   <div class="hero">
     <h1>Tienda</h1>
-    <p>
-      No es una tienda tradicional.  
-      Es una extensión del ecosistema Miranda Flow.  
-      Cada sección representa una presencia y un nivel.
-    </p>
+
+    <div class="gender">
+      <button class="active">Hombre</button>
+      <button>Mujer</button>
+      <button>Unisex</button>
+    </div>
   </div>
 
-  <div class="grid">
-    <div class="card" onclick="openCategory('Hoodies')"><h3>Hoodies</h3></div>
-    <div class="card" onclick="openCategory('Pantalones')"><h3>Pantalones</h3></div>
-    <div class="card" onclick="openCategory('Pullovers')"><h3>Pullovers</h3></div>
-    <div class="card" onclick="openCategory('Conjuntos')"><h3>Conjuntos</h3></div>
-    <div class="card" onclick="openCategory('Shorts')"><h3>Shorts</h3></div>
+  <div class="collections">
+    <h2>Colecciones</h2>
+
+    <div class="collection-grid">
+      <div class="collection" onclick="openCollection('Hoodies')">Hoodies</div>
+      <div class="collection" onclick="openCollection('Pantalones')">Pantalones</div>
+      <div class="collection" onclick="openCollection('Pullovers')">Pullovers</div>
+      <div class="collection" onclick="openCollection('Conjuntos')">Conjuntos</div>
+      <div class="collection" onclick="openCollection('Shorts')">Shorts</div>
+    </div>
   </div>
 </section>
 
-<!-- PRODUCTS VIEW -->
-<section id="products" class="products">
+<section id="products" class="products fadeIn">
   <div class="hero">
-    <h2 id="catTitle"></h2>
+    <h2 id="title"></h2>
     <div class="product-grid">
-      <div class="product">Producto</div>
-      <div class="product">Producto</div>
       <div class="product">Producto</div>
       <div class="product">Producto</div>
       <div class="product">Producto</div>
@@ -228,23 +224,21 @@ header{
   </div>
 </section>
 
-<div class="fade"></div>
-
 <script>
-let inCategory = false;
+let inside=false;
 
-function openCategory(name){
+function openCollection(name){
   document.getElementById('main').style.display='none';
   document.getElementById('products').style.display='block';
-  document.getElementById('catTitle').innerText=name;
-  inCategory = true;
+  document.getElementById('title').innerText=name;
+  inside=true;
 }
 
 function goBack(){
-  if(inCategory){
+  if(inside){
     document.getElementById('products').style.display='none';
     document.getElementById('main').style.display='block';
-    inCategory = false;
+    inside=false;
   }else{
     window.location.href='index.html';
   }
