@@ -12,7 +12,7 @@
 
 body{
   font-family:'Inter',sans-serif;
-  background:#f5f3ee;
+  background:#f6f4ef;
   color:#111;
 }
 
@@ -20,14 +20,14 @@ body{
 header{
   position:sticky;
   top:0;
-  background:#f5f3ee;
-  z-index:20;
+  background:#f6f4ef;
+  z-index:10;
   border-bottom:1px solid rgba(0,0,0,.08);
 }
 .nav{
   max-width:1300px;
   margin:auto;
-  padding:22px 28px;
+  padding:20px 26px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -35,19 +35,19 @@ header{
 .brand{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:12px;
   font-family:'Playfair Display',serif;
   font-size:20px;
 }
 .brand img{
-  width:36px;
-  height:36px;
+  width:34px;
+  height:34px;
   border-radius:8px;
 }
 .nav a{
-  margin-left:30px;
+  margin-left:26px;
   font-size:12px;
-  letter-spacing:.18em;
+  letter-spacing:.16em;
   text-transform:uppercase;
   color:#111;
 }
@@ -55,10 +55,10 @@ header{
 /* BACK */
 .back{
   position:fixed;
-  top:100px;
+  top:96px;
   left:22px;
-  width:46px;
-  height:46px;
+  width:44px;
+  height:44px;
   border-radius:50%;
   background:#fff;
   display:flex;
@@ -69,30 +69,31 @@ header{
   box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
-/* HERO */
-.hero{
+/* MAIN */
+.main{
   max-width:1300px;
   margin:auto;
-  padding:140px 28px 60px;
+  padding:140px 26px 80px;
 }
-.hero h1{
+h1{
   font-family:'Playfair Display',serif;
   font-size:64px;
+  margin-bottom:30px;
 }
 
 /* GENDER */
 .gender{
   display:flex;
-  gap:18px;
-  margin-top:40px;
+  gap:14px;
+  margin-bottom:50px;
 }
 .gender button{
+  padding:12px 26px;
+  border-radius:30px;
+  border:1px solid rgba(0,0,0,.2);
   background:#fff;
-  border:1px solid rgba(0,0,0,.15);
-  padding:14px 28px;
-  border-radius:40px;
-  font-size:14px;
   cursor:pointer;
+  font-size:14px;
 }
 .gender button.active{
   background:#111;
@@ -100,67 +101,59 @@ header{
 }
 
 /* COLLECTIONS */
-.collections{
-  max-width:1300px;
-  margin:auto;
-  padding:40px 28px 120px;
-}
 .collections h2{
   font-family:'Playfair Display',serif;
   font-size:38px;
-  margin-bottom:40px;
+  margin-bottom:30px;
 }
-
 .collection-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
+  margin-bottom:70px;
 }
-
 .collection{
   background:#fff;
   border-radius:22px;
-  padding:40px 20px;
+  padding:40px;
   text-align:center;
-  font-size:18px;
   font-family:'Playfair Display',serif;
+  font-size:20px;
   cursor:pointer;
-  transition:.4s;
+  transition:.35s;
 }
 .collection:hover{
-  transform:translateY(-8px);
-  box-shadow:0 30px 60px rgba(0,0,0,.15);
+  transform:translateY(-6px);
+  box-shadow:0 25px 50px rgba(0,0,0,.15);
 }
 
 /* PRODUCTS */
-.products{
-  display:none;
-}
 .products h2{
   font-family:'Playfair Display',serif;
-  font-size:42px;
-  margin-bottom:40px;
+  font-size:34px;
+  margin-bottom:30px;
 }
 .product-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:26px;
 }
 .product{
   background:#fff;
-  height:320px;
+  height:300px;
   border-radius:22px;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#999;
+  color:#aaa;
   letter-spacing:.18em;
   text-transform:uppercase;
+  font-size:12px;
 }
 
-/* ANIM */
-.fadeIn{
-  animation:fade .6s ease forwards;
+/* ANIMATION */
+.fade{
+  animation:fade .5s ease;
 }
 @keyframes fade{
   from{opacity:0;transform:translateY(20px)}
@@ -171,7 +164,7 @@ header{
 
 <body>
 
-<div class="back" onclick="goBack()">←</div>
+<div class="back" onclick="window.location.href='index.html'">←</div>
 
 <header>
   <div class="nav">
@@ -186,63 +179,63 @@ header{
   </div>
 </header>
 
-<section id="main">
-  <div class="hero">
-    <h1>Tienda</h1>
+<div class="main">
 
-    <div class="gender">
-      <button class="active">Hombre</button>
-      <button>Mujer</button>
-      <button>Unisex</button>
-    </div>
+<h1>Tienda</h1>
+
+<div class="gender">
+  <button class="active" onclick="setGender('Hombre',this)">Hombre</button>
+  <button onclick="setGender('Mujer',this)">Mujer</button>
+  <button onclick="setGender('Unisex',this)">Unisex</button>
+</div>
+
+<div class="collections fade">
+  <h2>Colecciones</h2>
+  <div class="collection-grid">
+    <div class="collection" onclick="setCollection('Hoodies')">Hoodies</div>
+    <div class="collection" onclick="setCollection('Pantalones')">Pantalones</div>
+    <div class="collection" onclick="setCollection('Pullovers')">Pullovers</div>
+    <div class="collection" onclick="setCollection('Conjuntos')">Conjuntos</div>
+    <div class="collection" onclick="setCollection('Shorts')">Shorts</div>
   </div>
+</div>
 
-  <div class="collections">
-    <h2>Colecciones</h2>
+<div class="products fade">
+  <h2 id="productsTitle">Productos</h2>
+  <div class="product-grid" id="productsGrid"></div>
+</div>
 
-    <div class="collection-grid">
-      <div class="collection" onclick="openCollection('Hoodies')">Hoodies</div>
-      <div class="collection" onclick="openCollection('Pantalones')">Pantalones</div>
-      <div class="collection" onclick="openCollection('Pullovers')">Pullovers</div>
-      <div class="collection" onclick="openCollection('Conjuntos')">Conjuntos</div>
-      <div class="collection" onclick="openCollection('Shorts')">Shorts</div>
-    </div>
-  </div>
-</section>
-
-<section id="products" class="products fadeIn">
-  <div class="hero">
-    <h2 id="title"></h2>
-    <div class="product-grid">
-      <div class="product">Producto</div>
-      <div class="product">Producto</div>
-      <div class="product">Producto</div>
-      <div class="product">Producto</div>
-      <div class="product">Producto</div>
-      <div class="product">Producto</div>
-    </div>
-  </div>
-</section>
+</div>
 
 <script>
-let inside=false;
+let gender='Hombre';
+let collection='Hoodies';
 
-function openCollection(name){
-  document.getElementById('main').style.display='none';
-  document.getElementById('products').style.display='block';
-  document.getElementById('title').innerText=name;
-  inside=true;
+function setGender(g,el){
+  gender=g;
+  document.querySelectorAll('.gender button').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderProducts();
 }
 
-function goBack(){
-  if(inside){
-    document.getElementById('products').style.display='none';
-    document.getElementById('main').style.display='block';
-    inside=false;
-  }else{
-    window.location.href='index.html';
+function setCollection(c){
+  collection=c;
+  renderProducts();
+}
+
+function renderProducts(){
+  const grid=document.getElementById('productsGrid');
+  const title=document.getElementById('productsTitle');
+  title.innerText=gender+' · '+collection;
+  grid.innerHTML='';
+  for(let i=0;i<8;i++){
+    const p=document.createElement('div');
+    p.className='product';
+    p.innerText='Producto';
+    grid.appendChild(p);
   }
 }
+renderProducts();
 </script>
 
 </body>
