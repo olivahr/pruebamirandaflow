@@ -77,7 +77,6 @@ nav a{
 }
 nav a:hover{opacity:1}
 
-/* ===== ESPACIO HEADER ===== */
 .spacer{height:110px}
 
 /* ===== CARRITO ===== */
@@ -165,8 +164,6 @@ nav a:hover{opacity:1}
   opacity:.6;
   margin-bottom:60px;
 }
-
-/* GRID */
 .exclusive-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -197,8 +194,8 @@ nav a:hover{opacity:1}
 /* ===== PROMO ===== */
 .promo{
   position:fixed;
-  bottom:26px;
-  right:22px;
+  bottom:22px;
+  left:22px;
   background:#fff;
   color:#000;
   padding:12px 18px;
@@ -206,6 +203,37 @@ nav a:hover{opacity:1}
   font-size:13px;
   font-weight:600;
   z-index:80;
+}
+
+/* ===== CONTACTO FLOAT (SOLO AL FINAL) ===== */
+.contacto-float{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  padding:14px 28px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(16px);
+  box-shadow:0 14px 55px rgba(0,0,0,.65);
+  opacity:0;
+  pointer-events:none;
+  transition:.5s ease;
+  z-index:90;
+}
+.contacto-float.show{
+  opacity:1;
+  pointer-events:auto;
+}
+.contacto-float:hover{
+  background:#fff;
+  color:#000;
 }
 </style>
 </head>
@@ -216,7 +244,7 @@ nav a:hover{opacity:1}
 
 <header>
   <div class="brand">
-    <img src="logo.jpg">
+    <img src="logo.jpg" alt="Logo">
     <span>Boutique · Miranda Flow</span>
   </div>
   <nav>
@@ -256,8 +284,10 @@ nav a:hover{opacity:1}
 
 <div class="promo">🎁 -20% HOY</div>
 
+<a href="contacto.html" class="contacto-float" id="contactoBtn">CONTACTO</a>
+
 <script>
-/* EXCLUSIVE APPLE EFFECT */
+/* EXCLUSIVE EFFECT */
 const cards = document.querySelectorAll('.ex-card');
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
@@ -266,56 +296,18 @@ const observer = new IntersectionObserver(entries=>{
     }
   });
 },{threshold:.25});
-
 cards.forEach(card=>observer.observe(card));
-</script>
-<!-- BOTÓN FLOTANTE CONTACTO -->
-<style>
-form:scale(1)}
-}
-</style>
-<!-- BOTÓN FLOTANTE CONTACTO -->
-<style>
-.contacto-float{
-  position: fixed;
-  right: 20px;
-  bottom: 20px;           /* 👈 ABAJO DE VERDAD */
-  z-index: 50;            /* 👈 menor que el header */
-  
-  background: rgba(0,0,0,0.85);
-  color: #fff;
-  padding: 14px 26px;
-  border-radius: 999px;
 
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: .6px;
-  text-decoration: none;
-
-  border: 1px solid rgba(255,255,255,.15);
-  box-shadow: 0 12px 40px rgba(0,0,0,.45);
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  animation: pulse 2.8s ease-in-out infinite;
-}
-<script>
-window.addEventListener('load', () => {
-  document.querySelector('.contacto-float').style.display = 'block';
+/* CONTACTO SOLO AL FINAL */
+const contactoBtn = document.getElementById('contactoBtn');
+window.addEventListener('scroll',()=>{
+  if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 120){
+    contactoBtn.classList.add('show');
+  }else{
+    contactoBtn.classList.remove('show');
+  }
 });
 </script>
 
-<a href="contacto.html" class="contacto-float">
-  Contacto
-</a>
-
 </body>
 </html>
-</body>
-</html>
-
-
-
-
-
