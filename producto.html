@@ -9,132 +9,219 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  font-family:Inter,system-ui;
+  font-family:'Inter',sans-serif;
   background:#000;
   color:#fff;
+  overflow-x:hidden;
 }
 
-/* Background glow */
+/* Glow background */
 .bg{
   position:fixed;
   inset:-30%;
   background:
-    radial-gradient(700px 500px at 20% 30%, #0f3b2e55, transparent),
-    radial-gradient(600px 500px at 80% 70%, #1a1a1a, transparent);
-  filter:blur(60px);
+    radial-gradient(900px 500px at 20% 10%, rgba(0,120,255,.15), transparent),
+    radial-gradient(800px 500px at 80% 80%, rgba(0,255,180,.12), transparent);
+  filter:blur(120px);
   z-index:-1;
 }
 
 /* Header */
 header{
+  position:fixed;
+  top:0;left:0;width:100%;
   display:flex;
   align-items:center;
-  padding:20px 24px;
+  justify-content:space-between;
+  padding:20px 32px;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  z-index:10;
 }
-
-.back{
-  font-size:26px;
-  text-decoration:none;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand img{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+}
+.brand span{
+  font-weight:800;
+  letter-spacing:.2em;
+  font-size:.75rem;
+  opacity:.85;
+}
+.nav{
+  display:flex;
+  gap:28px;
+}
+.nav a{
   color:#fff;
-  opacity:.7;
+  text-decoration:none;
+  font-size:.85rem;
+  letter-spacing:.12em;
+  opacity:.75;
   transition:.3s;
 }
-.back:hover{opacity:1;transform:translateX(-4px)}
+.nav a:hover{opacity:1}
 
-.brand{
-  margin-left:16px;
-  font-weight:700;
-  letter-spacing:.12em;
+/* Back button */
+.back{
+  position:fixed;
+  top:92px;
+  left:24px;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+  font-size:1.2rem;
+  cursor:pointer;
+  transition:.3s;
+  z-index:5;
 }
+.back:hover{background:rgba(255,255,255,.18)}
 
-/* Product */
-.product{
-  max-width:1100px;
-  margin:40px auto;
+/* Product layout */
+.main{
+  padding:160px 10vw 120px;
   display:grid;
-  grid-template-columns:1.1fr 1fr;
-  gap:60px;
-  padding:0 24px;
-  animation:fadeUp 1s ease forwards;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+}
+@media(max-width:900px){
+  .main{grid-template-columns:1fr}
 }
 
-.product img{
+/* Image */
+.product-img{
+  background:rgba(255,255,255,.04);
+  border-radius:32px;
+  padding:40px;
+}
+.product-img img{
   width:100%;
-  border-radius:22px;
-  box-shadow:0 30px 80px #000;
+  border-radius:24px;
 }
 
+/* Info */
 .info h1{
-  font-size:clamp(32px,5vw,56px);
-  margin-bottom:16px;
+  font-size:clamp(2.2rem,4vw,3.5rem);
+  font-weight:800;
+  letter-spacing:.15em;
 }
-
-.price{
-  font-size:24px;
-  opacity:.8;
-  margin-bottom:30px;
-}
-
-.desc{
-  font-size:15px;
+.info p{
+  margin-top:18px;
+  opacity:.7;
   line-height:1.7;
-  opacity:.85;
-  margin-bottom:40px;
+  max-width:520px;
 }
 
-.btn{
-  display:inline-block;
-  padding:16px 36px;
-  border-radius:999px;
-  border:1px solid #fff;
-  color:#fff;
-  text-decoration:none;
-  letter-spacing:.12em;
-  transition:.35s;
+/* Tags */
+.tags{
+  display:flex;
+  gap:12px;
+  margin:26px 0;
+  flex-wrap:wrap;
 }
-.btn:hover{
+.tag{
+  padding:8px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  font-size:.7rem;
+  letter-spacing:.14em;
+}
+
+/* Actions */
+.actions{
+  margin-top:32px;
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.actions a{
+  padding:14px 26px;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:.75rem;
+  letter-spacing:.14em;
+  transition:.3s;
+}
+.primary{
+  background:#fff;
+  color:#000;
+}
+.primary:hover{opacity:.85}
+.secondary{
+  border:1px solid rgba(255,255,255,.3);
+  color:#fff;
+}
+.secondary:hover{
   background:#fff;
   color:#000;
 }
 
-/* Anim */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:none}
-}
-
-/* Responsive */
-@media(max-width:900px){
-  .product{grid-template-columns:1fr}
-}
+/* Footer spacing */
+footer{height:120px}
 </style>
 </head>
 
 <body>
+
 <div class="bg"></div>
 
 <header>
-  <a href="tienda.html" class="back">←</a>
-  <div class="brand">BOUTIQUE · MIRANDA FLOW</div>
+  <div class="brand">
+    <img src="logo.jpg" alt="Miranda Flow">
+    <span>BOUTIQUE · MIRANDA FLOW</span>
+  </div>
+  <nav class="nav">
+    <a href="index.html">INICIO</a>
+    <a href="tienda.html">TIENDA</a>
+    <a href="carrito.html">CARRITO</a>
+  </nav>
 </header>
 
-<section class="product">
-  <img src="hoodie.jpg" alt="Producto">
+<a href="tienda.html" class="back">←</a>
+
+<section class="main">
+
+  <div class="product-img">
+    <img src="exclusive-1.jpg" alt="Producto">
+  </div>
 
   <div class="info">
-    <h1>Emotions Never Die Hoodie</h1>
-    <div class="price">$120 USD</div>
+    <h1>PIEZA EXCLUSIVA</h1>
 
-    <div class="desc">
-      Pieza de muestra del ecosistema Miranda Flow.  
-      Corte sólido, presencia visual, sin exagerar.  
-      Esto no es fast fashion. Es identidad.
+    <p>
+      Prenda de muestra del ecosistema Miranda Flow.  
+      No es solo ropa: es presencia, nivel y entrada a un sistema.
+    </p>
+
+    <div class="tags">
+      <div class="tag">EDICIÓN LIMITADA</div>
+      <div class="tag">BOUTIQUE</div>
+      <div class="tag">SISTEMA Z</div>
     </div>
 
-    <a href="#" class="btn">AGREGAR AL CARRITO</a>
+    <div class="actions">
+      <a href="tienda.html" class="primary">VOLVER A TIENDA →</a>
+      <a href="carrito.html" class="secondary">AGREGAR AL CARRITO</a>
+    </div>
   </div>
+
 </section>
+
+<footer></footer>
 
 </body>
 </html>
