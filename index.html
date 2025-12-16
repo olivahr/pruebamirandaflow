@@ -8,86 +8,111 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  font-family:'Inter',sans-serif;
+  font-family:'Inter',system-ui,-apple-system;
   background:#000;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== LOGO FONDO CON VIDA ===== */
+/* ===== BACKGROUND LOGO ===== */
 .bg-logo{
   position:fixed;
-  inset:-20%;
-  background:url('logo.jpg') center/520px no-repeat;
-  opacity:.08;
+  inset:-30%;
+  background:url('logo.jpg') center/600px no-repeat;
+  opacity:0.16;
   filter:blur(10px);
-  animation:floatLogo 18s ease-in-out infinite;
+  animation:floatLogo 22s ease-in-out infinite;
   z-index:-2;
 }
+
 @keyframes floatLogo{
-  0%{transform:scale(1) translateY(0)}
-  50%{transform:scale(1.05) translateY(-20px)}
-  100%{transform:scale(1) translateY(0)}
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-30px)}
+  100%{transform:translateY(0)}
 }
 
 /* ===== HEADER ===== */
 header{
   position:fixed;
   top:0;
+  left:0;
   width:100%;
-  padding:18px 22px;
+  padding:18px 28px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:linear-gradient(to bottom,rgba(0,0,0,.85),transparent);
+  backdrop-filter:blur(16px);
+  background:rgba(0,0,0,0.45);
+  border-bottom:1px solid rgba(255,255,255,0.08);
   z-index:100;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
 }
-.brand img{width:36px}
+
+.brand img{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+}
+
 .brand span{
-  font-size:13px;
+  font-weight:600;
   letter-spacing:2px;
-  font-weight:700;
+  font-size:13px;
+  opacity:.9;
 }
 
 nav{
   display:flex;
-  gap:26px;
+  gap:28px;
 }
-nav a{
-  color:#aaa;
-  text-decoration:none;
-  font-size:14px;
-}
-nav a:hover{color:#fff}
 
-/* ===== CARRITO DISCRETO ===== */
+nav a{
+  text-decoration:none;
+  color:#fff;
+  font-size:14px;
+  letter-spacing:2px;
+  opacity:.75;
+  transition:.3s;
+}
+
+nav a:hover{
+  opacity:1;
+}
+
+/* ===== CART ===== */
 .cart{
   position:fixed;
-  top:20px;
+  top:78px; /* más abajo como pediste */
   right:18px;
-  width:40px;
-  height:40px;
+  width:46px;
+  height:46px;
   border-radius:50%;
-  background:rgba(255,255,255,.1);
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter:blur(12px);
   display:flex;
   align-items:center;
   justify-content:center;
-  text-decoration:none;
+  font-size:20px;
   color:#fff;
-  font-size:18px;
-  animation:cartIn .6s ease forwards;
-}
-@keyframes cartIn{
-  from{opacity:0;transform:scale(.7)}
-  to{opacity:1;transform:scale(1)}
+  box-shadow:0 0 22px rgba(255,255,255,.18);
+  z-index:90;
 }
 
 /* ===== HERO ===== */
@@ -96,122 +121,87 @@ nav a:hover{color:#fff}
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:120px 20px 80px;
+  padding:140px 20px 80px;
 }
 
 .card{
-  max-width:480px;
-  background:rgba(255,255,255,.07);
-  backdrop-filter:blur(22px);
-  border-radius:30px;
-  padding:46px;
-  box-shadow:0 50px 120px rgba(0,0,0,.8);
-  animation:cardIn .8s ease forwards;
+  max-width:460px;
+  width:100%;
+  padding:44px 36px;
+  border-radius:26px;
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 40px 80px rgba(0,0,0,.7);
+  animation:fadeUp 1.2s ease forwards;
 }
-@keyframes cardIn{
+
+@keyframes fadeUp{
   from{opacity:0;transform:translateY(40px)}
   to{opacity:1;transform:translateY(0)}
 }
 
 .card h1{
-  font-size:48px;
+  font-size:44px;
   font-weight:800;
   line-height:1.05;
+  margin-bottom:18px;
 }
 
 .card p{
-  margin-top:20px;
-  color:#d0d0d0;
   font-size:15px;
-  line-height:1.6;
+  line-height:1.7;
+  opacity:.85;
+  margin-bottom:26px;
 }
 
-.actions{
-  margin-top:36px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-
-.btn-main{
-  background:#fff;
-  color:#000;
-  padding:16px;
+/* ===== BUTTONS ===== */
+.btn{
+  width:100%;
+  padding:14px 18px;
   border-radius:14px;
   font-weight:600;
-  text-align:center;
-  text-decoration:none;
+  font-size:14px;
+  letter-spacing:2px;
+  border:none;
+  cursor:pointer;
+  margin-bottom:14px;
 }
 
-.btn-sec{
-  border:1px solid rgba(255,255,255,.3);
+.btn-primary{
+  background:#fff;
+  color:#000;
+}
+
+.btn-secondary{
+  background:transparent;
   color:#fff;
-  padding:14px;
-  border-radius:14px;
-  text-align:center;
-  text-decoration:none;
+  border:1px solid rgba(255,255,255,.3);
 }
 
-/* ===== EXCLUSIVE ===== */
-.exclusive{
-  padding:110px 20px;
-}
-
-.exclusive h2{
-  font-size:38px;
-  letter-spacing:8px;
-  margin-bottom:40px;
-  opacity:0;
-  animation:fadeTitle .8s ease forwards;
-}
-@keyframes fadeTitle{
-  to{opacity:1}
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:26px;
-}
-
-.grid img{
-  width:100%;
-  border-radius:22px;
-  filter:brightness(.7);
-  transform:translateY(40px);
-  opacity:0;
-  animation:fadeUp .8s forwards;
-}
-
-.grid img:nth-child(1){animation-delay:.2s}
-.grid img:nth-child(2){animation-delay:.35s}
-.grid img:nth-child(3){animation-delay:.5s}
-.grid img:nth-child(4){animation-delay:.65s}
-
-@keyframes fadeUp{
-  to{
-    transform:translateY(0);
-    opacity:1;
-    filter:brightness(1);
-  }
-}
-
-/* ===== DESCUENTO ===== */
+/* ===== DISCOUNT ===== */
 .discount{
   position:fixed;
-  bottom:20px;
+  bottom:26px;
   right:20px;
   background:#fff;
   color:#000;
-  padding:14px 18px;
+  padding:12px 18px;
   border-radius:40px;
-  font-weight:700;
-  font-size:14px;
-  animation:fadeUp .6s ease forwards;
+  font-size:13px;
+  font-weight:600;
+  box-shadow:0 12px 30px rgba(0,0,0,.6);
 }
 
+/* ===== MOBILE ===== */
 @media(max-width:600px){
-  .card h1{font-size:40px}
+  nav{
+    gap:18px;
+  }
+
+  .card h1{
+    font-size:36px;
+  }
 }
 </style>
 </head>
@@ -222,7 +212,7 @@ nav a:hover{color:#fff}
 
 <header>
   <div class="brand">
-    <img src="logo.jpg">
+    <img src="logo.jpg" alt="Miranda Flow">
     <span>BOUTIQUE · MIRANDA FLOW</span>
   </div>
 
@@ -232,31 +222,25 @@ nav a:hover{color:#fff}
   </nav>
 </header>
 
-<a href="carrito.html" class="cart">🛒</a>
+<div class="cart">🛒</div>
 
 <section class="hero">
   <div class="card">
     <h1>MIRANDA<br>FLOW</h1>
+
     <p>
       Prendas con presencia.<br>
       Esto no es una tienda.<br>
       Es la entrada a un ecosistema.
     </p>
 
-    <div class="actions">
-      <a href="prendas.html" class="btn-main">ENTRAR A PRENDAS →</a>
-      <a href="#exclusive" class="btn-sec">VER EXCLUSIVE ↓</a>
-    </div>
-  </div>
-</section>
+    <button class="btn btn-primary" onclick="location.href='prendas.html'">
+      ENTRAR A PRENDAS →
+    </button>
 
-<section id="exclusive" class="exclusive">
-  <h2>EXCLUSIVE</h2>
-  <div class="grid">
-    <img src="exclusive-1.jpg">
-    <img src="exclusive-2.jpg">
-    <img src="exclusive-3.jpg">
-    <img src="exclusive-4.jpg">
+    <button class="btn btn-secondary">
+      VER EXCLUSIVE ↓
+    </button>
   </div>
 </section>
 
