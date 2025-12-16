@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prendas | Miranda Flow</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -20,76 +20,56 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 40px;
+  padding:20px 40px;
   border-bottom:1px solid #eee;
 }
-header nav a{
-  margin:0 14px;
+header a{
   text-decoration:none;
   color:#111;
   font-size:14px;
-}
-.icons span{
-  margin-left:14px;
-  font-size:18px;
-  cursor:pointer;
+  margin-left:16px;
 }
 
-/* HERO */
-.hero{
-  padding:80px 40px 60px;
-  max-width:1200px;
-  margin:auto;
-}
-.hero h1{
-  font-size:48px;
-  font-weight:500;
-}
-.hero p{
-  margin-top:16px;
-  max-width:520px;
-  color:#666;
-  line-height:1.6;
-}
-
-/* GRID */
-.section{
+/* TITLE */
+.title{
   max-width:1200px;
   margin:auto;
   padding:40px;
 }
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:40px;
-}
-.item{
-  cursor:pointer;
-}
-.item img{
-  width:100%;
-  border-radius:8px;
-  transition:transform .4s ease;
-}
-.item:hover img{
-  transform:scale(1.03);
-}
-.item h3{
-  margin-top:14px;
-  font-size:15px;
+.title h1{
+  font-size:36px;
   font-weight:500;
 }
-.item span{
-  font-size:13px;
-  color:#666;
+
+/* GRID */
+.grid{
+  max-width:1200px;
+  margin:auto;
+  padding:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:40px;
 }
 
-/* FOOT NOTE */
-.note{
-  text-align:center;
-  padding:60px 20px;
-  color:#777;
+.card{
+  cursor:pointer;
+}
+.card img{
+  width:100%;
+  border-radius:8px;
+  transition:.3s;
+}
+.card:hover img{
+  transform:translateY(-4px);
+}
+.card h3{
+  margin-top:12px;
+  font-size:14px;
+  font-weight:500;
+}
+.card span{
   font-size:13px;
+  color:#666;
 }
 </style>
 </head>
@@ -101,57 +81,41 @@ header nav a{
   <nav>
     <a href="index.html">Inicio</a>
     <a href="tienda.html">Tienda</a>
+    <a href="carrito.html">Carrito</a>
   </nav>
-  <div class="icons">
-    <span>🔍</span>
-    <span>🤍</span>
-    <span onclick="location.href='carrito.html'">🛒</span>
-  </div>
 </header>
 
-<section class="hero">
+<section class="title">
   <h1>Prendas</h1>
-  <p>
-    Piezas seleccionadas.  
-    Diseño limpio, carácter fuerte y presencia real.  
-    Cada prenda representa una identidad.
-  </p>
 </section>
 
-<section class="section">
-  <div class="grid">
+<section class="grid">
 
-    <div class="item" onclick="location.href='producto.html'">
-      <img src="prod1.jpg" alt="">
-      <h3>Hoodie Signature</h3>
-      <span>Edición limitada</span>
-    </div>
-
-    <div class="item" onclick="location.href='producto.html'">
-      <img src="prod2.jpg" alt="">
-      <h3>Pantalón Essential</h3>
-      <span>Corte premium</span>
-    </div>
-
-    <div class="item" onclick="location.href='producto.html'">
-      <img src="prod3.jpg" alt="">
-      <h3>Graphic Tee</h3>
-      <span>Algodón pesado</span>
-    </div>
-
-    <div class="item" onclick="location.href='producto.html'">
-      <img src="prod4.jpg" alt="">
-      <h3>Conjunto Studio</h3>
-      <span>Drop exclusivo</span>
-    </div>
-
+  <div class="card" onclick="location.href='producto.html'">
+    <img src="prod1.jpg">
+    <h3>Hoodie Signature</h3>
+    <span>$120</span>
   </div>
-</section>
 
-<div class="note">
-  Nuevas piezas se liberan por drop.  
-  No todo vuelve.
-</div>
+  <div class="card" onclick="location.href='producto.html'">
+    <img src="prod2.jpg">
+    <h3>Pantalón Essential</h3>
+    <span>$140</span>
+  </div>
+
+  <div class="card" onclick="location.href='producto.html'">
+    <img src="prod3.jpg">
+    <h3>Graphic Tee</h3>
+    <span>$85</span>
+  </div>
+
+  <div class="card" onclick="location.href='producto.html'">
+    <img src="prod4.jpg">
+    <h3>Conjunto Studio</h3>
+    <span>$220</span>
+  </div>
+
+</section>
 
 </body>
 </html>
