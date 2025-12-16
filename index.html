@@ -1,185 +1,196 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Miranda Flow Boutique</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miranda Flow | Boutique</title>
 
-  <!-- Google Font -->
+  <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: radial-gradient(circle at top left, #0c1f3a, #020409);
-      color: #ffffff;
-      overflow-x: hidden;
+    body{
+      font-family:'Montserrat', system-ui, sans-serif;
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(0,120,255,.25), transparent 60%),
+        radial-gradient(900px 600px at 80% 80%, rgba(0,255,150,.18), transparent 65%),
+        #050505;
+      color:#fff;
+      overflow-x:hidden;
     }
 
-    /* ===== NAVBAR ===== */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(10px);
-      z-index: 100;
-    }
-
-    .brand {
-      font-weight: 700;
-      letter-spacing: 3px;
-      font-size: 14px;
-      opacity: 0.9;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 30px;
-      font-size: 14px;
-      font-weight: 400;
-      opacity: 0.85;
-      transition: opacity 0.3s;
-    }
-
-    nav a:hover {
-      opacity: 1;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 140px 60px;
-      position: relative;
-    }
-
-    /* LOGO GIGANTE DE FONDO */
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url('logo.jpg') no-repeat center;
-      background-size: 70%;
-      opacity: 0.12;
-      filter: blur(2px);
-    }
-
-    .hero-content {
-      position: relative;
-      max-width: 700px;
-      animation: fadeUp 1.2s ease forwards;
-    }
-
-    .hero h1 {
-      font-size: 72px;
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 25px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      font-weight: 300;
-      opacity: 0.9;
-      max-width: 500px;
-    }
-
-    /* ===== DESCUENTO FLOTANTE ===== */
-    .promo {
-      position: fixed;
-      right: 30px;
-      bottom: 30px;
-      background: rgba(255,255,255,0.08);
+    /* ================= TOP BAR ================= */
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      padding:18px 40px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:rgba(5,5,5,.55);
       backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 18px;
-      padding: 18px 22px;
-      max-width: 220px;
-      animation: float 3.5s ease-in-out infinite;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      z-index: 90;
+      z-index:1000;
     }
 
-    .promo span {
-      font-size: 12px;
-      letter-spacing: 2px;
-      opacity: 0.7;
+    .brand{
+      letter-spacing:6px;
+      font-weight:600;
+      opacity:.9;
     }
 
-    .promo h3 {
-      font-size: 26px;
-      font-weight: 800;
-      margin: 8px 0;
+    nav a{
+      margin-left:28px;
+      text-decoration:none;
+      color:#fff;
+      font-size:14px;
+      opacity:.85;
+      transition:.3s;
     }
 
-    .promo p {
-      font-size: 13px;
-      opacity: 0.85;
+    nav a:hover{
+      opacity:1;
     }
 
-    /* ===== ANIMACIONES ===== */
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+    /* ================= HERO ================= */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:140px 40px 80px;
+      position:relative;
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:url("img/logo.jpg") center/700px no-repeat;
+      opacity:.06;
+      filter:blur(1px);
     }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      header {
-        padding: 16px 20px;
-      }
+    .hero-content{
+      max-width:700px;
+      position:relative;
+      z-index:2;
+    }
 
-      nav a {
-        margin-left: 18px;
-        font-size: 13px;
-      }
+    .hero h1{
+      font-size:clamp(48px,8vw,96px);
+      font-weight:800;
+      line-height:1;
+      letter-spacing:-2px;
+      margin-bottom:20px;
+    }
 
-      .hero {
-        padding: 120px 24px;
-      }
+    .hero p{
+      font-size:18px;
+      opacity:.85;
+      max-width:420px;
+    }
 
-      .hero::before {
-        background-size: 110%;
-      }
+    /* ================= FLOAT DISCOUNT ================= */
+    .gift{
+      position:fixed;
+      right:25px;
+      bottom:25px;
+      background:linear-gradient(135deg,#00ff9d,#00b3ff);
+      color:#000;
+      padding:16px 22px;
+      border-radius:18px;
+      font-weight:700;
+      box-shadow:0 0 40px rgba(0,255,200,.45);
+      animation:float 3s ease-in-out infinite;
+      z-index:1001;
+    }
 
-      .hero h1 {
-        font-size: 48px;
-      }
+    @keyframes float{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-10px);}
+    }
 
-      .hero p {
-        font-size: 17px;
-      }
+    /* ================= EXCLUSIVES ================= */
+    .exclusives{
+      padding:120px 40px;
+      max-width:1200px;
+      margin:auto;
+    }
 
-      .promo {
-        right: 16px;
-        bottom: 16px;
-        max-width: 190px;
+    .exclusives h2{
+      font-size:36px;
+      font-weight:700;
+      margin-bottom:14px;
+    }
+
+    .exclusives span{
+      opacity:.7;
+      font-size:15px;
+    }
+
+    .exclusive-grid{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:30px;
+    }
+
+    .exclusive-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:22px;
+      height:360px;
+      background:#000;
+      box-shadow:0 25px 60px rgba(0,0,0,.6);
+      transition:.5s;
+    }
+
+    .exclusive-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:grayscale(100%) contrast(1.05);
+      transition:.6s;
+    }
+
+    .exclusive-card:hover img{
+      transform:scale(1.12);
+      filter:none;
+    }
+
+    .exclusive-label{
+      position:absolute;
+      bottom:20px;
+      left:20px;
+      font-weight:700;
+      letter-spacing:2px;
+      font-size:14px;
+      opacity:.9;
+    }
+
+    /* ================= FOOTER ================= */
+    footer{
+      text-align:center;
+      padding:40px 20px;
+      opacity:.55;
+      font-size:13px;
+    }
+
+    /* ================= MOBILE ================= */
+    @media(max-width:768px){
+      header{
+        padding:14px 20px;
+      }
+      nav a{
+        margin-left:16px;
+        font-size:13px;
       }
     }
   </style>
@@ -187,12 +198,12 @@
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- HEADER -->
   <header>
     <div class="brand">BOUTIQUE</div>
     <nav>
       <a href="index.html">Inicio</a>
-      <a href="producto.html">Prendas</a>
+      <a href="tienda.html">Prendas</a>
       <a href="tienda.html">Tienda</a>
       <a href="carrito.html">Carrito</a>
     </nav>
@@ -202,19 +213,47 @@
   <section class="hero">
     <div class="hero-content">
       <h1>MIRANDA<br>FLOW</h1>
-      <p>
-        Ropa con presencia.<br>
-        Estilo que se nota sin hablar.
-      </p>
+      <p>Ropa con presencia. Estilo que se nota sin hablar.</p>
     </div>
   </section>
 
-  <!-- PROMO FLOTANTE -->
-  <div class="promo">
-    <span>EXCLUSIVE DROP</span>
-    <h3>-15%</h3>
-    <p>En piezas seleccionadas por tiempo limitado.</p>
+  <!-- EXCLUSIVES -->
+  <section class="exclusives">
+    <h2>EXCLUSIVAS</h2>
+    <span>Selección premium — impacto visual garantizado</span>
+
+    <div class="exclusive-grid">
+      <div class="exclusive-card">
+        <img src="img/exclusive-1.jpg" alt="Exclusiva 1">
+        <div class="exclusive-label">EXCLUSIVA 01</div>
+      </div>
+
+      <div class="exclusive-card">
+        <img src="img/exclusive-2.jpg" alt="Exclusiva 2">
+        <div class="exclusive-label">EXCLUSIVA 02</div>
+      </div>
+
+      <div class="exclusive-card">
+        <img src="img/exclusive-3.jpg" alt="Exclusiva 3">
+        <div class="exclusive-label">EXCLUSIVA 03</div>
+      </div>
+
+      <div class="exclusive-card">
+        <img src="img/exclusive-4.jpg" alt="Exclusiva 4">
+        <div class="exclusive-label">EXCLUSIVA 04</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFT -->
+  <div class="gift">
+    🎁 -15% SOLO HOY
   </div>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Miranda Flow — Todos los derechos reservados
+  </footer>
 
 </body>
 </html>
