@@ -39,22 +39,23 @@ header{
 .logo-small{
     display:flex;
     align-items:center;
-    gap:10px;
-    font-weight:600;
-    letter-spacing:3px;
+    gap:12px;
+    font-weight:700;
+    letter-spacing:4px;
 }
 
 .logo-small img{
-    height:36px;
+    height:42px;
+    filter:drop-shadow(0 0 12px rgba(255,255,255,.35));
 }
 
 nav a{
-    margin-left:30px;
+    margin-left:32px;
     color:#fff;
     text-decoration:none;
     font-size:14px;
     letter-spacing:2px;
-    opacity:.85;
+    opacity:.8;
 }
 
 nav a:hover{
@@ -65,11 +66,10 @@ nav a:hover{
 .hero{
     min-height:100vh;
     padding-top:120px;
-    position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
-    text-align:left;
+    position:relative;
 }
 
 /* LOGO GIGANTE FONDO */
@@ -78,15 +78,15 @@ nav a:hover{
     position:absolute;
     inset:0;
     background:
-        radial-gradient(circle at center, rgba(0,0,0,.4), #000 70%),
-        url("logo.jpg") center/70% no-repeat;
-    opacity:.18;
-    animation:floatLogo 12s ease-in-out infinite;
+        radial-gradient(circle at center, rgba(0,0,0,.35), #000 70%),
+        url("logo.jpg") center/65% no-repeat;
+    opacity:.25;
+    animation:logoFloat 14s ease-in-out infinite;
 }
 
-@keyframes floatLogo{
+@keyframes logoFloat{
     0%{transform:scale(1) translateY(0);}
-    50%{transform:scale(1.03) translateY(-10px);}
+    50%{transform:scale(1.05) translateY(-15px);}
     100%{transform:scale(1) translateY(0);}
 }
 
@@ -97,9 +97,9 @@ nav a:hover{
 }
 
 .hero h1{
-    font-size:clamp(48px,8vw,90px);
+    font-size:clamp(50px,9vw,96px);
     font-weight:900;
-    letter-spacing:4px;
+    letter-spacing:5px;
 }
 
 .hero p{
@@ -111,8 +111,8 @@ nav a:hover{
 }
 
 .hero button{
-    margin-top:40px;
-    padding:16px 42px;
+    margin-top:42px;
+    padding:16px 44px;
     background:none;
     border:1px solid #fff;
     color:#fff;
@@ -125,14 +125,14 @@ nav a:hover{
     color:#000;
 }
 
-/* ---------- DESCUENTO FLOTANTE ---------- */
+/* ---------- DESCUENTO ---------- */
 .discount{
     position:fixed;
     bottom:30px;
     right:30px;
     background:#fff;
     color:#000;
-    padding:16px 26px;
+    padding:16px 28px;
     border-radius:40px;
     font-weight:700;
     display:flex;
@@ -145,32 +145,46 @@ nav a:hover{
 
 @keyframes pulse{
     0%{transform:scale(1);}
-    50%{transform:scale(1.05);}
+    50%{transform:scale(1.08);}
     100%{transform:scale(1);}
 }
 
 /* ---------- EXCLUSIVAS ---------- */
 .exclusive{
-    padding:120px 8vw;
+    padding:140px 8vw;
 }
 
 .exclusive h2{
-    font-size:36px;
-    letter-spacing:4px;
-    margin-bottom:60px;
+    font-size:38px;
+    letter-spacing:5px;
+    margin-bottom:70px;
 }
 
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:40px;
+    gap:46px;
 }
 
 .card{
     position:relative;
-    border-radius:20px;
+    border-radius:22px;
     overflow:hidden;
     background:#111;
+    opacity:0;
+    transform:translateY(60px);
+    animation:fadeUp 1.2s ease forwards;
+}
+
+.card:nth-child(2){animation-delay:.2s;}
+.card:nth-child(3){animation-delay:.4s;}
+.card:nth-child(4){animation-delay:.6s;}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .card img{
@@ -181,14 +195,14 @@ nav a:hover{
 }
 
 .card:hover img{
-    transform:scale(1.08);
+    transform:scale(1.1);
     filter:brightness(.75);
 }
 
 .card span{
     position:absolute;
-    bottom:20px;
-    left:20px;
+    bottom:22px;
+    left:22px;
     font-weight:700;
     letter-spacing:2px;
 }
@@ -212,7 +226,6 @@ footer{
     </div>
     <nav>
         <a href="index.html">Inicio</a>
-        <a href="producto.html">Prendas</a>
         <a href="producto.html">Tienda</a>
         <a href="carrito.html">Carrito</a>
     </nav>
