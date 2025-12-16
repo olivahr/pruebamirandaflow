@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Contacto · Miranda Flow Boutique</title>
+<title>Contacto · Miranda Flow</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -10,10 +10,12 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:'Inter',system-ui;
   background:#000;
   color:#fff;
+  min-height:100vh;
   overflow-x:hidden;
 }
 
@@ -21,11 +23,11 @@ body{
 .bg-logo{
   position:fixed;
   inset:-20%;
-  background:url('logo.jpg') center/460px no-repeat;
-  opacity:.25;
-  filter:blur(2px);
-  animation:pulse 8s ease-in-out infinite;
-  z-index:-2;
+  background:url('logo.jpg') center/420px no-repeat;
+  opacity:.22;
+  filter:blur(1.2px);
+  animation:pulse 7s ease-in-out infinite;
+  z-index:-1;
 }
 @keyframes pulse{
   0%,100%{transform:scale(1)}
@@ -33,107 +35,109 @@ body{
 }
 
 /* ===== HEADER ===== */
-header{
+.header{
   position:fixed;
-  top:14px;
+  top:16px;
   left:50%;
   transform:translateX(-50%);
-  width:calc(100% - 28px);
-  max-width:1000px;
-  z-index:50;
+  width:calc(100% - 32px);
+  max-width:1200px;
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  gap:14px;
   padding:14px 22px;
   border-radius:18px;
   background:rgba(0,0,0,.45);
   backdrop-filter:blur(20px);
-  box-shadow:0 10px 40px rgba(0,0,0,.6);
+  z-index:50;
 }
-header a{
+.header a{
   color:#fff;
   text-decoration:none;
   font-size:13px;
   letter-spacing:.18em;
   opacity:.7;
 }
-header a:hover{opacity:1}
+.header a:hover{opacity:1}
 
-/* ===== ESPACIO HEADER ===== */
-.spacer{height:110px}
+/* ===== ESPACIO ===== */
+.spacer{height:120px}
 
 /* ===== CONTENIDO ===== */
-.contacto{
-  min-height:calc(100vh - 110px);
+.contact{
+  min-height:calc(100vh - 120px);
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:40px 20px;
+  padding:20px;
 }
-.contacto-card{
+
+.card{
   background:rgba(255,255,255,.06);
   backdrop-filter:blur(24px);
   border-radius:28px;
-  padding:46px 32px;
+  padding:44px 32px;
   max-width:420px;
   width:100%;
-  text-align:center;
   box-shadow:0 0 70px rgba(0,0,0,.7);
+  text-align:center;
 }
-.contacto-card h1{
-  font-size:36px;
+
+.card h1{
+  font-size:42px;
   font-weight:800;
-  margin-bottom:14px;
+  margin-bottom:18px;
 }
-.contacto-card p{
-  opacity:.7;
+
+.card p{
+  opacity:.75;
   line-height:1.6;
-  margin-bottom:34px;
+  margin-bottom:36px;
 }
 
 /* ===== BOTONES ===== */
-.contacto-links{
+.contact-btn{
   display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-.contacto-btn{
-  padding:18px;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:16px;
+  margin-bottom:16px;
   border-radius:16px;
   text-decoration:none;
   font-weight:600;
   letter-spacing:.14em;
+  font-size:13px;
   text-transform:uppercase;
-  font-size:12px;
-  display:block;
-  transition:.45s cubic-bezier(.2,.8,.2,1);
-  border:1px solid rgba(255,255,255,.25);
+  transition:all .35s ease;
 }
 
-/* Instagram */
-.btn-ig{
-  background:#fff;
+.whatsapp{
+  background:#25D366;
   color:#000;
 }
-.btn-ig:hover{
-  transform:translateY(-4px);
-  background:#000;
-  color:#fff;
-  border:1px solid rgba(255,255,255,.45);
+.whatsapp:hover{
+  filter:brightness(1.1);
+  transform:translateY(-2px);
 }
 
-/* WhatsApp (placeholder futuro) */
-.btn-disabled{
-  opacity:.35;
-  cursor:default;
+.instagram{
+  border:1px solid rgba(255,255,255,.35);
+  color:#fff;
+}
+.instagram:hover{
+  background:rgba(255,255,255,.08);
+  transform:translateY(-2px);
 }
 
 /* ===== FOOTER ===== */
 .footer{
-  padding:30px 20px 40px;
+  position:fixed;
+  bottom:16px;
+  width:100%;
   text-align:center;
   font-size:12px;
-  opacity:.4;
+  opacity:.45;
 }
 </style>
 </head>
@@ -142,41 +146,39 @@ header a:hover{opacity:1}
 
 <div class="bg-logo"></div>
 
-<header>
+<header class="header">
   <a href="index.html">← Inicio</a>
+  <span>Contacto</span>
 </header>
 
 <div class="spacer"></div>
 
-<section class="contacto">
-  <div class="contacto-card">
+<section class="contact">
+  <div class="card">
     <h1>Contacto</h1>
     <p>
-      Conecta con Miranda Flow.<br>
-      Presencia, visión y evolución.
+      No es solo atención.<br>
+      Es acceso directo a nuestro universo.
     </p>
 
-    <div class="contacto-links">
-      <a 
-        href="https://www.instagram.com/miranda_flow_boutique_2070?igsh=MWN2MXZkZnh2MXFyeg==" 
-        target="_blank" 
-        class="contacto-btn btn-ig">
-        Instagram
-      </a>
+    <!-- WHATSAPP -->
+    <a class="contact-btn whatsapp"
+       href="https://wa.me/17862902388"
+       target="_blank">
+      WhatsApp
+    </a>
 
-      <div class="contacto-btn btn-disabled">
-        WhatsApp (próximamente)
-      </div>
-
-      <div class="contacto-btn btn-disabled">
-        TikTok (próximamente)
-      </div>
-    </div>
+    <!-- INSTAGRAM -->
+    <a class="contact-btn instagram"
+       href="https://www.instagram.com/miranda_flow_boutique_2070?igsh=MWN2MXZkZnh2MXFyeg=="
+       target="_blank">
+      Instagram
+    </a>
   </div>
 </section>
 
 <div class="footer">
-  © 2025 Miranda Flow Boutique
+  © Miranda Flow Boutique
 </div>
 
 </body>
