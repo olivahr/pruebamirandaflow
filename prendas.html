@@ -2,199 +2,156 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Prendas | Sistema Z</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prendas | Miranda Flow</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:'Inter',system-ui;
-  background:#000;
-  color:#fff;
-  overflow-x:hidden;
+  font-family:Inter,sans-serif;
+  background:#fff;
+  color:#111;
 }
 
-/* ===== FONDO SISTEMA ===== */
-.bg{
-  position:fixed;
-  inset:-20%;
-  background:
-    radial-gradient(700px 500px at 25% 20%, rgba(255,255,255,.08), transparent 60%),
-    radial-gradient(700px 500px at 75% 70%, rgba(0,180,255,.08), transparent 65%);
-  filter:blur(24px);
-  z-index:-1;
-}
-
-/* ===== FLECHA LIMPIA ===== */
-.back{
-  position:fixed;
-  top:18px;
-  left:18px;
-  width:46px;
-  height:46px;
-  border-radius:14px;
-  background:rgba(255,255,255,.12);
-  backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.25);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  color:#fff;
-  font-size:20px;
-  z-index:50;
-  transition:.2s;
-}
-.back:hover{
-  background:rgba(255,255,255,.22);
-  transform:translateX(-2px);
-}
-
-/* ===== HEADER ===== */
+/* HEADER */
 header{
-  padding:90px 20px 60px;
-  text-align:center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 40px;
+  border-bottom:1px solid #eee;
+}
+header nav a{
+  margin:0 14px;
+  text-decoration:none;
+  color:#111;
+  font-size:14px;
+}
+.icons span{
+  margin-left:14px;
+  font-size:18px;
+  cursor:pointer;
 }
 
-header h1{
-  font-size:40px;
-  font-weight:700;
-  letter-spacing:.3px;
+/* HERO */
+.hero{
+  padding:80px 40px 60px;
+  max-width:1200px;
+  margin:auto;
+}
+.hero h1{
+  font-size:48px;
+  font-weight:500;
+}
+.hero p{
+  margin-top:16px;
+  max-width:520px;
+  color:#666;
+  line-height:1.6;
 }
 
-header p{
+/* GRID */
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:40px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:40px;
+}
+.item{
+  cursor:pointer;
+}
+.item img{
+  width:100%;
+  border-radius:8px;
+  transition:transform .4s ease;
+}
+.item:hover img{
+  transform:scale(1.03);
+}
+.item h3{
   margin-top:14px;
   font-size:15px;
-  color:rgba(255,255,255,.65);
+  font-weight:500;
 }
-
-/* ===== GRID PUERTAS ===== */
-.grid{
-  max-width:1100px;
-  margin:0 auto;
-  padding:20px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:30px;
-}
-
-/* ===== TARJETAS ===== */
-.card{
-  position:relative;
-  height:300px;
-  border-radius:28px;
-  overflow:hidden;
-  cursor:pointer;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.16);
-  backdrop-filter:blur(18px);
-  transition:.4s cubic-bezier(.2,.8,.2,1);
-}
-
-.card::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.75), transparent 60%);
-}
-
-.card:hover{
-  transform:translateY(-10px) scale(1.02);
-  border-color:rgba(255,255,255,.35);
-}
-
-/* ===== TEXTO ===== */
-.label{
-  position:absolute;
-  bottom:24px;
-  left:24px;
-  z-index:2;
-}
-
-.label h3{
-  font-size:20px;
-  font-weight:600;
-}
-
-.label span{
-  display:block;
-  margin-top:6px;
+.item span{
   font-size:13px;
-  color:rgba(255,255,255,.65);
+  color:#666;
 }
 
-/* ===== ANIMACIÓN ENTRADA ===== */
-.fade{
-  opacity:0;
-  transform:translateY(50px);
-  animation:fadeUp .7s ease forwards;
-}
-.fade:nth-child(2){animation-delay:.1s}
-.fade:nth-child(3){animation-delay:.2s}
-.fade:nth-child(4){animation-delay:.3s}
-
-@keyframes fadeUp{
-  to{opacity:1; transform:translateY(0)}
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:600px){
-  header h1{font-size:32px}
+/* FOOT NOTE */
+.note{
+  text-align:center;
+  padding:60px 20px;
+  color:#777;
+  font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-
-<!-- Flecha Sistema Z -->
-<a href="index.html" class="back">←</a>
-
 <header>
-  <h1>Prendas</h1>
-  <p>Puertas de acceso al ecosistema Miranda Flow</p>
+  <strong>Miranda Flow</strong>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="tienda.html">Tienda</a>
+  </nav>
+  <div class="icons">
+    <span>🔍</span>
+    <span>🤍</span>
+    <span onclick="location.href='carrito.html'">🛒</span>
+  </div>
 </header>
 
-<section class="grid">
-
-  <div class="card fade" onclick="location.href='tienda.html'">
-    <div class="label">
-      <h3>Relojes</h3>
-      <span>Tiempo · Presencia</span>
-    </div>
-  </div>
-
-  <div class="card fade" onclick="location.href='tienda.html'">
-    <div class="label">
-      <h3>Cadenas</h3>
-      <span>Detalle · Nivel</span>
-    </div>
-  </div>
-
-  <div class="card fade" onclick="location.href='tienda.html'">
-    <div class="label">
-      <h3>Anillos</h3>
-      <span>Firma personal</span>
-    </div>
-  </div>
-
-  <div class="card fade" onclick="location.href='tienda.html'">
-    <div class="label">
-      <h3>Accesorios</h3>
-      <span>Extensión del estilo</span>
-    </div>
-  </div>
-
+<section class="hero">
+  <h1>Prendas</h1>
+  <p>
+    Piezas seleccionadas.  
+    Diseño limpio, carácter fuerte y presencia real.  
+    Cada prenda representa una identidad.
+  </p>
 </section>
+
+<section class="section">
+  <div class="grid">
+
+    <div class="item" onclick="location.href='producto.html'">
+      <img src="prod1.jpg" alt="">
+      <h3>Hoodie Signature</h3>
+      <span>Edición limitada</span>
+    </div>
+
+    <div class="item" onclick="location.href='producto.html'">
+      <img src="prod2.jpg" alt="">
+      <h3>Pantalón Essential</h3>
+      <span>Corte premium</span>
+    </div>
+
+    <div class="item" onclick="location.href='producto.html'">
+      <img src="prod3.jpg" alt="">
+      <h3>Graphic Tee</h3>
+      <span>Algodón pesado</span>
+    </div>
+
+    <div class="item" onclick="location.href='producto.html'">
+      <img src="prod4.jpg" alt="">
+      <h3>Conjunto Studio</h3>
+      <span>Drop exclusivo</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="note">
+  Nuevas piezas se liberan por drop.  
+  No todo vuelve.
+</div>
 
 </body>
 </html>
