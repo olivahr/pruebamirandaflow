@@ -22,18 +22,18 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== FONDO SISTEMA Z ===== */
+/* ===== FONDO ===== */
 .bg{
   position:fixed;
   inset:-20%;
   background:
-    radial-gradient(800px 600px at 20% 20%, rgba(255,255,255,.07), transparent 60%),
-    radial-gradient(800px 600px at 80% 80%, rgba(0,200,255,.08), transparent 65%);
+    radial-gradient(900px 600px at 20% 20%, rgba(255,255,255,.06), transparent 60%),
+    radial-gradient(900px 600px at 80% 80%, rgba(0,200,255,.07), transparent 65%);
   filter:blur(26px);
   z-index:-1;
 }
 
-/* ===== FLECHA LIMPIA ===== */
+/* ===== FLECHA SISTEMA Z ===== */
 .back{
   position:fixed;
   top:18px;
@@ -60,7 +60,7 @@ body{
 
 /* ===== HEADER ===== */
 header{
-  padding:90px 20px 40px;
+  padding:90px 20px 50px;
   text-align:center;
 }
 
@@ -72,69 +72,78 @@ header h1{
 header p{
   margin-top:12px;
   font-size:15px;
-  color:rgba(255,255,255,.65);
+  color:rgba(255,255,255,.6);
 }
 
-/* ===== GRID REAL ===== */
+/* ===== SECCIONES (ENTRADA) ===== */
+.sections{
+  max-width:1200px;
+  margin:0 auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+
+.section-btn{
+  height:220px;
+  border-radius:28px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(18px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:.4px;
+  cursor:pointer;
+  transition:.35s cubic-bezier(.2,.8,.2,1);
+}
+
+.section-btn:hover{
+  transform:translateY(-10px) scale(1.03);
+  border-color:rgba(255,255,255,.35);
+}
+
+/* ===== VISTAS INTERNAS ===== */
+.view{
+  display:none;
+  padding:90px 20px 140px;
+}
+
+.view.active{
+  display:block;
+}
+
+.view h2{
+  text-align:center;
+  font-size:32px;
+  font-weight:600;
+  margin-bottom:40px;
+}
+
+/* ===== GRID INVENTARIO ===== */
 .grid{
   max-width:1400px;
   margin:0 auto;
-  padding:20px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:26px;
 }
 
-/* ===== CARD ===== */
-.card{
-  position:relative;
+.item{
+  height:240px;
+  border-radius:26px;
   background:rgba(255,255,255,.07);
   border:1px solid rgba(255,255,255,.18);
-  border-radius:26px;
-  overflow:hidden;
-  cursor:pointer;
   backdrop-filter:blur(18px);
-  transition:.35s cubic-bezier(.2,.8,.2,1);
+  transition:.3s;
 }
 
-.card:hover{
+.item:hover{
   transform:translateY(-8px);
   border-color:rgba(255,255,255,.35);
-}
-
-.card img{
-  width:100%;
-  height:240px;
-  object-fit:cover;
-  display:block;
-}
-
-/* INFO */
-.info{
-  padding:18px;
-}
-
-.info h3{
-  font-size:17px;
-  font-weight:600;
-}
-
-.info span{
-  display:block;
-  margin-top:6px;
-  font-size:13px;
-  color:rgba(255,255,255,.6);
-}
-
-/* ===== ANIMACIÓN ENTRADA ===== */
-.fade{
-  opacity:0;
-  transform:translateY(40px);
-  animation:fadeUp .6s ease forwards;
-}
-
-@keyframes fadeUp{
-  to{opacity:1; transform:translateY(0)}
 }
 
 /* ===== RESPONSIVE ===== */
@@ -155,83 +164,73 @@ header p{
 
 <div class="bg"></div>
 
-<!-- Flecha Sistema Z -->
+<!-- Flecha SIEMPRE A INDEX -->
 <a href="index.html" class="back">←</a>
 
 <header>
   <h1>Tienda</h1>
-  <p>Ecosistema visual · Selección Sistema Z</p>
+  <p>Ecosistema · Inventario por secciones</p>
 </header>
 
-<section class="grid">
-
-  <!-- FILA 1 -->
-  <div class="card fade" onclick="location.href='producto.html'">
-    <img src="exclusive-1.jpg">
-    <div class="info">
-      <h3>Pieza Z-01</h3>
-      <span>Acceso interno</span>
-    </div>
-  </div>
-
-  <div class="card fade" style="animation-delay:.05s" onclick="location.href='producto.html'">
-    <img src="exclusive-2.jpg">
-    <div class="info">
-      <h3>Pieza Z-02</h3>
-      <span>Edición limitada</span>
-    </div>
-  </div>
-
-  <div class="card fade" style="animation-delay:.1s" onclick="location.href='producto.html'">
-    <img src="exclusive-3.jpg">
-    <div class="info">
-      <h3>Pieza Z-03</h3>
-      <span>Drop visual</span>
-    </div>
-  </div>
-
-  <div class="card fade" style="animation-delay:.15s" onclick="location.href='producto.html'">
-    <img src="exclusive-4.jpg">
-    <div class="info">
-      <h3>Pieza Z-04</h3>
-      <span>Sistema Z</span>
-    </div>
-  </div>
-
-  <!-- FILA 2 -->
-  <div class="card fade" style="animation-delay:.2s" onclick="location.href='producto.html'">
-    <img src="exclusive-1.jpg">
-    <div class="info">
-      <h3>Pieza Z-05</h3>
-      <span>Selección premium</span>
-    </div>
-  </div>
-
-  <div class="card fade" style="animation-delay:.25s" onclick="location.href='producto.html'">
-    <img src="exclusive-2.jpg">
-    <div class="info">
-      <h3>Pieza Z-06</h3>
-      <span>Acceso curado</span>
-    </div>
-  </div>
-
-  <div class="card fade" style="animation-delay:.3s" onclick="location.href='producto.html'">
-    <img src="exclusive-3.jpg">
-    <div class="info">
-      <h3>Pieza Z-07</h3>
-      <span>Nivel interno</span>
-    </div>
-  </div>
-
-  <div class="card fade" style="animation-delay:.35s" onclick="location.href='producto.html'">
-    <img src="exclusive-4.jpg">
-    <div class="info">
-      <h3>Pieza Z-08</h3>
-      <span>Ecosistema</span>
-    </div>
-  </div>
-
+<!-- ENTRADA A SECCIONES -->
+<section id="menu" class="sections">
+  <div class="section-btn" onclick="openView('juri')">Juri</div>
+  <div class="section-btn" onclick="openView('pantalon')">Pantalón</div>
+  <div class="section-btn" onclick="openView('pulover')">Pulóver</div>
+  <div class="section-btn" onclick="openView('conjunto')">Conjunto</div>
+  <div class="section-btn" onclick="openView('short')">Short</div>
 </section>
+
+<!-- VISTAS INTERNAS -->
+
+<section id="juri" class="view">
+  <h2>Juri</h2>
+  <div class="grid">
+    <div class="item"></div><div class="item"></div>
+    <div class="item"></div><div class="item"></div>
+    <div class="item"></div><div class="item"></div>
+  </div>
+</section>
+
+<section id="pantalon" class="view">
+  <h2>Pantalón</h2>
+  <div class="grid">
+    <div class="item"></div><div class="item"></div>
+    <div class="item"></div><div class="item"></div>
+  </div>
+</section>
+
+<section id="pulover" class="view">
+  <h2>Pulóver</h2>
+  <div class="grid">
+    <div class="item"></div><div class="item"></div>
+    <div class="item"></div><div class="item"></div>
+  </div>
+</section>
+
+<section id="conjunto" class="view">
+  <h2>Conjunto</h2>
+  <div class="grid">
+    <div class="item"></div><div class="item"></div>
+    <div class="item"></div><div class="item"></div>
+  </div>
+</section>
+
+<section id="short" class="view">
+  <h2>Short</h2>
+  <div class="grid">
+    <div class="item"></div><div class="item"></div>
+    <div class="item"></div><div class="item"></div>
+  </div>
+</section>
+
+<script>
+function openView(id){
+  document.getElementById('menu').style.display='none';
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
 
 </body>
 </html>
