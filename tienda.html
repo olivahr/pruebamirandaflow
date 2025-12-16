@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tienda · Miranda Flow</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#f6f4ef;
-  --black:#0e0e0e;
-  --gray:#888;
-  --card:#ffffff;
+  --bg:#f5f5f3;
+  --black:#0b0b0b;
+  --gray:#777;
+  --white:#ffffff;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
-  font-family:'Inter',sans-serif;
   background:var(--bg);
   color:var(--black);
+  font-family:'Inter',sans-serif;
 }
 
 /* HEADER */
 header{
   position:sticky;
   top:0;
-  background:rgba(246,244,239,.95);
-  backdrop-filter:blur(8px);
-  z-index:10;
+  background:rgba(245,245,243,.95);
+  backdrop-filter:blur(10px);
   border-bottom:1px solid #ddd;
+  z-index:10;
 }
 .nav{
   max-width:1200px;
   margin:auto;
-  padding:18px 22px;
+  padding:20px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
 }
 .brand{
   display:flex;
@@ -45,51 +46,48 @@ header{
   gap:12px;
 }
 .brand img{
-  width:38px;
+  width:40px;
 }
 .brand span{
   font-family:'Playfair Display',serif;
   font-size:22px;
   font-weight:600;
 }
-.nav-links{
-  display:flex;
-  gap:24px;
-  font-size:14px;
-}
-.nav-links a{
+.nav a{
   text-decoration:none;
-  color:var(--black);
+  color:#000;
+  margin-left:22px;
+  font-size:14px;
 }
 
 /* BACK */
 .back{
-  margin:30px auto 0;
   max-width:1200px;
-  padding:0 22px;
+  margin:30px auto;
+  padding:0 20px;
 }
 .back a{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:42px;height:42px;
+  width:44px;height:44px;
   border-radius:50%;
   background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-decoration:none;
   color:#000;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
 /* HERO */
 .hero{
   max-width:1200px;
   margin:40px auto;
-  padding:0 22px;
+  padding:0 20px;
 }
 .hero h1{
   font-family:'Playfair Display',serif;
-  font-size:52px;
-  margin-bottom:12px;
+  font-size:54px;
+  margin-bottom:10px;
 }
 .hero p{
   max-width:520px;
@@ -100,16 +98,15 @@ header{
 /* FILTER */
 .filter{
   display:flex;
-  gap:12px;
+  gap:14px;
   margin-top:30px;
 }
 .filter button{
-  padding:10px 22px;
-  border-radius:30px;
+  padding:10px 26px;
+  border-radius:40px;
   border:1px solid #ccc;
   background:#fff;
   cursor:pointer;
-  font-size:14px;
 }
 .filter button.active{
   background:#000;
@@ -118,55 +115,44 @@ header{
 }
 
 /* COLLECTIONS */
-.collections{
+.section{
   max-width:1200px;
-  margin:80px auto 0;
-  padding:0 22px;
+  margin:90px auto;
+  padding:0 20px;
 }
-.collections h2{
+.section h2{
   font-family:'Playfair Display',serif;
-  font-size:34px;
+  font-size:36px;
   margin-bottom:30px;
 }
-.collection-grid{
+.collections{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:26px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
 }
 .collection{
   background:#fff;
-  border-radius:20px;
-  padding:60px 20px;
+  padding:70px 20px;
+  border-radius:24px;
   text-align:center;
   font-family:'Playfair Display',serif;
   font-size:22px;
-  cursor:pointer;
   transition:.4s;
 }
 .collection:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(0,0,0,.12);
+  transform:translateY(-8px);
+  box-shadow:0 25px 50px rgba(0,0,0,.15);
 }
 
 /* PRODUCTS */
 .products{
-  max-width:1200px;
-  margin:90px auto;
-  padding:0 22px;
-}
-.products h2{
-  font-family:'Playfair Display',serif;
-  font-size:34px;
-  margin-bottom:40px;
-}
-.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:34px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:36px;
 }
 .product{
   background:#fff;
-  border-radius:20px;
+  border-radius:24px;
   padding:20px;
   transition:.4s;
 }
@@ -175,20 +161,20 @@ header{
 }
 .product img{
   width:100%;
-  border-radius:14px;
+  border-radius:18px;
 }
 .product h4{
   margin-top:14px;
-  font-weight:600;
+  font-weight:500;
 }
 .product span{
   font-size:14px;
   color:#777;
 }
 
-/* FOOT */
+/* FOOTER */
 footer{
-  padding:80px 22px 40px;
+  padding:80px 20px 40px;
   text-align:center;
   font-size:13px;
   color:#777;
@@ -204,7 +190,7 @@ footer{
       <img src="logo.jpg">
       <span>Miranda Flow</span>
     </div>
-    <div class="nav-links">
+    <div>
       <a href="index.html">Inicio</a>
       <a href="carrito.html">Carrito</a>
     </div>
@@ -217,9 +203,9 @@ footer{
 
 <section class="hero">
   <h1>Tienda</h1>
-  <p>No es fast fashion.  
-     Cada sección es una colección.  
-     Cada prenda es identidad.</p>
+  <p>Selección curada.  
+     No fast fashion.  
+     Sistema Z.</p>
 
   <div class="filter">
     <button class="active">Hombre</button>
@@ -228,9 +214,9 @@ footer{
   </div>
 </section>
 
-<section class="collections">
+<section class="section">
   <h2>Colecciones</h2>
-  <div class="collection-grid">
+  <div class="collections">
     <div class="collection">Hoodies</div>
     <div class="collection">Pantalones</div>
     <div class="collection">Pullovers</div>
@@ -239,9 +225,9 @@ footer{
   </div>
 </section>
 
-<section class="products">
+<section class="section">
   <h2>Selección</h2>
-  <div class="grid">
+  <div class="products">
     <div class="product">
       <img src="exclusive-1.jpg">
       <h4>Hoodie Signature</h4>
@@ -266,7 +252,7 @@ footer{
 </section>
 
 <footer>
-  Miranda Flow · Sistema Z  
+  Miranda Flow · Sistema Z
 </footer>
 
 </body>
