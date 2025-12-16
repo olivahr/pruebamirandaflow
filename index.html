@@ -271,6 +271,11 @@ cards.forEach(card=>observer.observe(card));
 </script>
 <!-- BOTÓN FLOTANTE CONTACTO -->
 <style>
+form:scale(1)}
+}
+</style>
+<!-- BOTÓN FLOTANTE CONTACTO -->
+<style>
 .contacto-float{
   position:fixed;
   right:22px;
@@ -304,7 +309,13 @@ cards.forEach(card=>observer.observe(card));
 
 <a href="contacto.html" class="contacto-float">
   Contacto
-</a>
+</a>  
+<script>
+window.addEventListener('load', ()=>{
+  document.querySelector('.contacto-float').style.display = 'block';
+});
+</script>
 </body>
 </html>
+
 
