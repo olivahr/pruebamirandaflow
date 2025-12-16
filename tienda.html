@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Miranda Flow Boutique</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================= RESET ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #060606;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 36px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,.6));
+    }
+
+    nav a {
+      margin-left: 32px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1px;
+      opacity: .75;
+      transition: opacity .3s;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+      min-height: 100vh;
+      padding: 160px 6% 120px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        radial-gradient(700px 400px at 50% 20%, rgba(255,0,150,.22), transparent 60%),
+        radial-gradient(600px 400px at 80% 80%, rgba(0,140,255,.22), transparent 60%),
+        #060606;
+    }
+
+    /* Watermark logo */
+    .hero::before {
+      content: "Miranda Flow";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(80px, 16vw, 220px);
+      font-weight: 900;
+      letter-spacing: 12px;
+      color: rgba(255,255,255,0.04);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      z-index: 2;
+    }
+
+    .hero h1 span {
+      display: block;
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 300;
+      letter-spacing: 6px;
+      opacity: .7;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 520px;
+      margin-top: 24px;
+      font-size: 18px;
+      opacity: .85;
+      z-index: 2;
+    }
+
+    /* ================= PRODUCTS ================= */
+    .products {
+      padding: 140px 6% 120px;
+    }
+
+    .products-header {
+      margin-bottom: 70px;
+    }
+
+    .products-header h2 {
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 800;
+    }
+
+    .products-header p {
+      margin-top: 14px;
+      max-width: 520px;
+      opacity: .8;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 46px;
+    }
+
+    .product-card {
+      background: rgba(20,20,20,.85);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform .6s, box-shadow .6s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 40px 90px rgba(0,0,0,.65);
+    }
+
+    .product-image {
+      height: 360px;
+      background: linear-gradient(135deg, #222, #111);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      opacity: .6;
+    }
+
+    .product-info {
+      padding: 28px;
+    }
+
+    .product-info h3 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .product-info p {
+      margin: 10px 0 20px;
+      font-size: 14px;
+      opacity: .75;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      padding: 80px 6% 40px;
+      text-align: center;
+      font-size: 13px;
+      opacity: .55;
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 768px) {
+      nav a {
+        margin-left: 18px;
+      }
+
+      .hero {
+        padding-top: 140px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="logo.jpg" alt="Miranda Flow Boutique">
+    </div>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="carrito.html">Carrito</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>
+      <span>Boutique Editorial</span>
+      Miranda Flow
+    </h1>
+    <p>
+      Piezas cuidadosamente seleccionadas para mujeres que entienden
+      que el estilo no se sigue: se impone.
+    </p>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products">
+    <div class="products-header">
+      <h2>Selección Curada</h2>
+      <p>
+        No es cantidad. Es criterio. Cada pieza existe
+        para elevar presencia y autoridad.
+      </p>
+    </div>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-image">Imagen del producto</div>
+        <div class="product-info">
+          <h3>Vestido Ébano</h3>
+          <p>Elegancia oscura con estructura impecable.</p>
+          <div class="price">$120</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">Imagen del producto</div>
+        <div class="product-info">
+          <h3>Conjunto Aurora</h3>
+          <p>Minimalismo con carácter dominante.</p>
+          <div class="price">$98</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">Imagen del producto</div>
+        <div class="product-info">
+          <h3>Blazer Noir</h3>
+          <p>Presencia absoluta en cada línea.</p>
+          <div class="price">$150</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Miranda Flow Boutique · Sistema Z
+  </footer>
+
+</body>
+</html>
