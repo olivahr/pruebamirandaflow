@@ -2,74 +2,106 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<title>Prendas · Miranda Flow</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prendas | Miranda Flow</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:Inter,sans-serif;
-  background:#fff;
-  color:#111;
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#000;
+  color:#fff;
 }
 
-/* HEADER */
 header{
+  padding:20px 28px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 40px;
-  border-bottom:1px solid #eee;
+  border-bottom:1px solid #111;
 }
+
 header a{
+  color:#fff;
   text-decoration:none;
-  color:#111;
+  margin-left:18px;
   font-size:14px;
-  margin-left:16px;
 }
 
-/* TITLE */
-.title{
+main{
   max-width:1200px;
-  margin:auto;
-  padding:40px;
-}
-.title h1{
-  font-size:36px;
-  font-weight:500;
+  margin:60px auto;
+  padding:0 20px;
 }
 
-/* GRID */
+h1{
+  font-size:48px;
+  margin-bottom:10px;
+}
+
+.sub{
+  color:#aaa;
+  margin-bottom:40px;
+  max-width:500px;
+}
+
+.filters{
+  display:flex;
+  gap:14px;
+  margin-bottom:40px;
+}
+
+.filter{
+  padding:10px 20px;
+  border:1px solid #333;
+  border-radius:30px;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.filter.active{
+  background:#fff;
+  color:#000;
+}
+
 .grid{
-  max-width:1200px;
-  margin:auto;
-  padding:40px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:40px;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:24px;
 }
 
 .card{
-  cursor:pointer;
-}
-.card img{
-  width:100%;
-  border-radius:8px;
+  background:#0b0b0b;
+  border-radius:18px;
+  padding:14px;
   transition:.3s;
 }
-.card:hover img{
-  transform:translateY(-4px);
+
+.card:hover{
+  transform:translateY(-6px);
 }
-.card h3{
-  margin-top:12px;
+
+.card img{
+  width:100%;
+  border-radius:14px;
+}
+
+.name{
+  margin-top:14px;
   font-size:14px;
-  font-weight:500;
 }
-.card span{
+
+.price{
+  margin-top:6px;
   font-size:13px;
+  color:#bbb;
+}
+
+footer{
+  text-align:center;
+  margin:80px 0 40px;
   color:#666;
+  font-size:13px;
 }
 </style>
 </head>
@@ -85,37 +117,52 @@ header a{
   </nav>
 </header>
 
-<section class="title">
+<main>
   <h1>Prendas</h1>
-</section>
+  <p class="sub">
+    Piezas seleccionadas. Lujo real.  
+    Presencia que no se explica.
+  </p>
 
-<section class="grid">
-
-  <div class="card" onclick="location.href='producto.html'">
-    <img src="prod1.jpg">
-    <h3>Hoodie Signature</h3>
-    <span>$120</span>
+  <div class="filters">
+    <div class="filter active">Todo</div>
+    <div class="filter">Relojes</div>
+    <div class="filter">Cadenas</div>
+    <div class="filter">Anillos</div>
+    <div class="filter">Guillos</div>
   </div>
 
-  <div class="card" onclick="location.href='producto.html'">
-    <img src="prod2.jpg">
-    <h3>Pantalón Essential</h3>
-    <span>$140</span>
-  </div>
+  <div class="grid">
+    <!-- Producto -->
+    <div class="card">
+      <img src="reloj1.jpg" alt="">
+      <div class="name">Reloj Signature</div>
+      <div class="price">$1,200</div>
+    </div>
 
-  <div class="card" onclick="location.href='producto.html'">
-    <img src="prod3.jpg">
-    <h3>Graphic Tee</h3>
-    <span>$85</span>
-  </div>
+    <div class="card">
+      <img src="cadena1.jpg" alt="">
+      <div class="name">Cadena Iced Cuban</div>
+      <div class="price">$950</div>
+    </div>
 
-  <div class="card" onclick="location.href='producto.html'">
-    <img src="prod4.jpg">
-    <h3>Conjunto Studio</h3>
-    <span>$220</span>
-  </div>
+    <div class="card">
+      <img src="anillo1.jpg" alt="">
+      <div class="name">Anillo Moissanite</div>
+      <div class="price">$420</div>
+    </div>
 
-</section>
+    <div class="card">
+      <img src="guillo1.jpg" alt="">
+      <div class="name">Guillo Diamond Cut</div>
+      <div class="price">$680</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © Miranda Flow
+</footer>
 
 </body>
 </html>
